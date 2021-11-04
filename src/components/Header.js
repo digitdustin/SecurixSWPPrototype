@@ -15,22 +15,12 @@ const Header = () => {
       { name: 'Settings', href: '#' },
       { name: 'Sign out', href: '#' },
     ]
-    const modulesNavigation = [
-        { name: '1. Arrays', href: '#' },
-        { name: '2. Trees', href: '#' },
-        { name: '3. Graphs', href: '#' },
-    ]
-    const projectsNavigation = [
-        { name: 'Project 1: Linked List', href: '#' },
-        { name: 'Project 2: AVL Tree', href: '#' },
-        { name: 'Project 3: PageRank', href: '#' },
-        { name: 'Final Project', href: '#' },
-    ]
+
     const navigation = [
       { name: 'Dashboard', href: '/', current: true, navigation: [] },
       { name: 'Forms', href: '/forms', current: false, navigation: [] },
-      { name: 'Course Resources', href: '#', current: false, navigation: [] },
-      { name: 'Schedule', href: '#', current: false, navigation: [] },
+      { name: 'Patches', href: '/patches', current: false, navigation: [] },
+      { name: 'How Tos', href: '/how-tos', current: false, navigation: [] },
     ]
 
 
