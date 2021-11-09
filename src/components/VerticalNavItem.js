@@ -1,15 +1,18 @@
 import React from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 
 const ItemHolder = styled.div`
     width: 90%;
-    height: 45px;
+    height: auto;
     margin: 3px;
     padding: 10px;
     padding-left: 15px;
     border-radius: 10px;
     background-color: transparent;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     color: #9CA3AF;
     font-family: 'Inter', sans-serif;
@@ -28,10 +31,14 @@ const ItemHolder = styled.div`
 `
 
 function VerticalNavItem(props) {
+    const history = useHistory();
+
+    const handleOnClick = () => history.push('/forms');
+
     return (
-        <ItemHolder active={props.active}>
-            {props.icon}
-            <h1 style={{fontSize: 15, fontWeight: 500, marginLeft: 15, paddingTop: 2}}>
+        <ItemHolder active={props.active} onClick={handleOnClick}>
+            <>{props.icon}</>
+            <h1 style={{fontSize: 15, fontWeight: 500, paddingTop: 2}}>
                 {props.title}
             </h1>
         </ItemHolder>

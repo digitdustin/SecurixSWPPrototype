@@ -10,13 +10,13 @@ import VerticalNav from './components/VerticalNav';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{display: 'flex', flexDirection: 'row'}}>
     <BrowserRouter>
-      <Header />
+        <VerticalNav />
+        <TopNav />
         <main>
           <Route path='/' exact>
-            <VerticalNav />
-            <TopNav />
+            
           </Route>
           <Route path='/forms' component={Forms} exact/>
           <Route path='/patches' component={Patches} exact/>

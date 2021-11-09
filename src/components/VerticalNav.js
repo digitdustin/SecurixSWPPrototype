@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import VerticalNavItem from './VerticalNavItem'
 
 const NavHolder = styled.div`
-    width: 15%;
-    max-width: 290px;
-    min-width: 270px;
+    width: 10%;
+    max-width: 140px;
+    min-width: 120px;
     height: 100vh;
     background-color: #1F2937;
     display: flex;
@@ -26,13 +26,13 @@ function VerticalNav() {
     return (
         <NavHolder>
             <IconHolder />
-            <VerticalNavItem icon={<HomeIcon style={{height: 23}}/>} title="Home" active/>
-            <VerticalNavItem icon={<UsersIcon style={{height: 23}}/>} title="Roles" />
-            <VerticalNavItem icon={<SupportIcon style={{height: 23}}/>} title="AV Support" />
-            <VerticalNavItem icon={<DocumentSearchIcon style={{height: 23}}/>} title="Pubs & Docs" />
-            <VerticalNavItem icon={<ShieldCheckIcon style={{height: 23}}/>} title="SRC" />
-            <VerticalNavItem icon={<BriefcaseIcon style={{height: 23}}/>} title="VTC" />
-            <VerticalNavItem icon={<QuestionMarkCircleIcon style={{height: 23}}/>} title="FAQ" />
+            <VerticalNavItem icon={<HomeIcon style={{height: 28}}/>} title="Home" active />
+            <VerticalNavItem icon={<UsersIcon style={{height: 28}}/>} title="Roles" />
+            <VerticalNavItem icon={<SupportIcon style={{height: 28}}/>} title="AV Support" />
+            <VerticalNavItem icon={<DocumentSearchIcon style={{height: 28}}/>} title="Pubs & Docs" link="/forms" />
+            <VerticalNavItem icon={<ShieldCheckIcon style={{height: 28}}/>} title="SRC" />
+            <VerticalNavItem icon={<BriefcaseIcon style={{height: 28}}/>} title="VTC" />
+            <VerticalNavItem icon={<QuestionMarkCircleIcon style={{height: 28}}/>} title="FAQ" />
         </NavHolder>
     )
 }
