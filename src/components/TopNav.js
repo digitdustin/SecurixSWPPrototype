@@ -1,33 +1,113 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import SearchBar from './SearchBar'
-import { BellIcon, BookmarkIcon, QuestionMarkCircleIcon } from '@heroicons/react/outline'
 import AProfilePicture from '../assets/img/AProfilePicture.png'
-
-const NavHolder = styled.div`
-    height: 60px;
-    width: 100%;
-    background-color: 'white';
-    border-bottom: 1px solid #eee;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-`
-
+import { 
+    Header, 
+    HeaderName, 
+    HeaderGlobalBar, 
+    HeaderGlobalAction, 
+    HeaderMenuButton,
+    SkipToContent,
+    SideNav, 
+    SideNavItems, 
+    SideNavMenu, 
+    SideNavMenuItem,
+    SideNavLink,
+    SideNavIcon
+} from 'carbon-components-react'
+import { 
+    Bookmark20, 
+    Help20, 
+    UserAvatar20, 
+    Notification20,
+    Home20,
+    UserMultiple20,
+    RequestQuote20,
+} from '@carbon/icons-react';
 
 function TopNav() {
+    const [isSideNavExpanded, setIsSideNavExpanded] = useState(false)
+
     return (
-        <NavHolder>
-            <SearchBar />
-            <div style={{height: '90%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginRight: 60}}>
-                <BellIcon style={{height: 28, width: 28, marginLeft: 20}} color='#8e959e'/>
-                <BookmarkIcon style={{height: 28, width: 28, marginLeft: 20}} color='#8e959e'/>
-                <QuestionMarkCircleIcon style={{height: 28, width: 28, marginLeft: 20}} color='#8e959e'/>
-                <img src={AProfilePicture} style={{height: 28, width: 28, marginLeft: 20, borderRadius: '50%'}} />
-            </div>
-        </NavHolder>
+        <Header aria-label="ATLAS Platform Name">
+            <SkipToContent />
+            <HeaderMenuButton
+                aria-label="Open menu"
+                isCollapsible
+                onClick={() => {setIsSideNavExpanded(!isSideNavExpanded)}}
+                isActive={isSideNavExpanded}
+            />
+            <HeaderName href='#' prefix="Atlas">
+                [SWIS]
+            </HeaderName>
+            <HeaderGlobalBar>
+                <HeaderGlobalAction aria-label="Bookmarks">
+                    <Bookmark20 />
+                </HeaderGlobalAction>
+                <HeaderGlobalAction aria-label="Quick Links">
+                    <Help20 />
+                </HeaderGlobalAction>
+                <HeaderGlobalAction aria-label="Notifications">
+                    <Notification20 />
+                </HeaderGlobalAction>
+                <HeaderGlobalAction aria-label="Profile">
+                    <UserAvatar20 />
+                </HeaderGlobalAction>
+            </HeaderGlobalBar>
+            <SideNav 
+                aria-label="Side navigation" 
+                expanded={isSideNavExpanded} 
+                isRail
+                onOverlayClick={() => {setIsSideNavExpanded(!isSideNavExpanded)}}
+            >
+            <SideNavItems>
+              <SideNavMenu renderIcon={Home20} title="Home" large>
+                <SideNavMenuItem href="javascript:void(0)">
+                  Link
+                </SideNavMenuItem>
+                <SideNavMenuItem href="javascript:void(0)">
+                  Link
+                </SideNavMenuItem>
+                <SideNavMenuItem href="javascript:void(0)">
+                  Link
+                </SideNavMenuItem>
+              </SideNavMenu>
+              <SideNavMenu
+                renderIcon={UserMultiple20}
+                title="Roles"
+                isActive={true}
+                large>
+                <SideNavMenuItem href="javascript:void(0)">
+                  Link
+                </SideNavMenuItem>
+                <SideNavMenuItem aria-current="page" href="javascript:void(0)">
+                  Link
+                </SideNavMenuItem>
+                <SideNavMenuItem href="javascript:void(0)">
+                  Link
+                </SideNavMenuItem>
+              </SideNavMenu>
+              <SideNavMenu renderIcon={RequestQuote20} title="Forms" large>
+                <SideNavMenuItem href="javascript:void(0)">
+                  Link
+                </SideNavMenuItem>
+                <SideNavMenuItem href="javascript:void(0)">
+                  Link
+                </SideNavMenuItem>
+                <SideNavMenuItem href="javascript:void(0)">
+                  Link
+                </SideNavMenuItem>
+              </SideNavMenu>
+              <SideNavLink renderIcon={Help20} href="javascript:void(0)" large>
+                Link
+              </SideNavLink>
+              <SideNavLink renderIcon={Help20} href="javascript:void(0)" large>
+                Link
+              </SideNavLink>
+            </SideNavItems>
+          </SideNav>
+        </Header>
     )
 }
 
