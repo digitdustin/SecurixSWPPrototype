@@ -14,28 +14,30 @@ import {
     SideNavMenu, 
     SideNavMenuItem,
     SideNavLink,
-    SideNavIcon
+    SideNavIcon,
+    HeaderContainer
 } from 'carbon-components-react'
 import { 
     Bookmark20, 
     Help20, 
     UserAvatar20, 
     Notification20,
-    Home20,
-    UserMultiple20,
-    RequestQuote20,
+    Home32,
+    UserMultiple32,
+    RequestQuote32,
 } from '@carbon/icons-react';
 
 function TopNav() {
-    const [isSideNavExpanded, setIsSideNavExpanded] = useState(false)
 
     return (
-        <Header aria-label="ATLAS Platform Name">
+        <HeaderContainer render={ ({ isSideNavExpanded, onClickSideNavExpand }) => (
+            <>
+        <Header aria-label="ATLAS Platform Name" >
             <SkipToContent />
             <HeaderMenuButton
                 aria-label="Open menu"
                 isCollapsible
-                onClick={() => {setIsSideNavExpanded(!isSideNavExpanded)}}
+                onClick={onClickSideNavExpand}
                 isActive={isSideNavExpanded}
             />
             <HeaderName href='#' prefix="Atlas">
@@ -59,10 +61,10 @@ function TopNav() {
                 aria-label="Side navigation" 
                 expanded={isSideNavExpanded} 
                 isRail
-                onOverlayClick={() => {setIsSideNavExpanded(!isSideNavExpanded)}}
+                onOverlayClick={onClickSideNavExpand}
             >
             <SideNavItems>
-              <SideNavMenu renderIcon={Home20} title="Home" large>
+              <SideNavMenu renderIcon={Home32} title="Home" large>
                 <SideNavMenuItem href="javascript:void(0)">
                   Link
                 </SideNavMenuItem>
@@ -74,7 +76,7 @@ function TopNav() {
                 </SideNavMenuItem>
               </SideNavMenu>
               <SideNavMenu
-                renderIcon={UserMultiple20}
+                renderIcon={UserMultiple32}
                 title="Roles"
                 isActive={true}
                 large>
@@ -88,7 +90,7 @@ function TopNav() {
                   Link
                 </SideNavMenuItem>
               </SideNavMenu>
-              <SideNavMenu renderIcon={RequestQuote20} title="Forms" large>
+              <SideNavMenu renderIcon={RequestQuote32} title="Forms" large>
                 <SideNavMenuItem href="javascript:void(0)">
                   Link
                 </SideNavMenuItem>
@@ -108,6 +110,10 @@ function TopNav() {
             </SideNavItems>
           </SideNav>
         </Header>
+        <p>Hello World</p>
+        </>
+  )}
+/>
     )
 }
 
