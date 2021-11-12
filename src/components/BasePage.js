@@ -2,7 +2,7 @@ import React from 'react'
 
 function BasePage() {
     return (
-        <div className="bx--grid" style={{height: 'calc(100vh - 30px)', paddingTop: 20, paddingBottom: 80, overflow: 'scroll'}}>
+        <div className="bx--grid" style={{height: 'calc(100vh - 30px)', paddingTop: 50, paddingBottom: 80, overflow: 'scroll'}}>
             <div className="bx--row">
               <section className="bx--offset-lg-3 bx--col-lg-13">
                 <h2

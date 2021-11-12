@@ -22,8 +22,8 @@ import {
 } from 'carbon-components-react'
 import { 
     Download20,
-    Save20,
-    Delete20
+    Bookmark20,
+    View20
 } from '@carbon/icons-react';
 
 const headers = [
@@ -89,15 +89,15 @@ function FormHolder() {
                 <TableBatchActions {...getBatchActionProps()}>
                     <TableBatchAction
                     tabIndex={getBatchActionProps().shouldShowBatchActions ? 0 : -1}
-                    renderIcon={Delete20}
+                    renderIcon={View20}
                     onClick={console.log(selectedRows)}>
-                    Delete
+                    View
                     </TableBatchAction>
                     <TableBatchAction
                     tabIndex={getBatchActionProps().shouldShowBatchActions ? 0 : -1}
-                    renderIcon={Save20}
+                    renderIcon={Bookmark20}
                     onClick={console.log(selectedRows)}>
-                    Save
+                    Bookmark
                     </TableBatchAction>
                     <TableBatchAction
                     tabIndex={getBatchActionProps().shouldShowBatchActions ? 0 : -1}
@@ -120,7 +120,7 @@ function FormHolder() {
                         Action 3
                       </TableToolbarAction>
                     </TableToolbarMenu>
-                    <Button onClick={console.log('Button click')}>Primary Button</Button>
+                    <Button onClick={console.log('Button click')}>New Form Request</Button>
                   </TableToolbarContent>
                 </TableToolbar>
                 <Table {...getTableProps()}>
