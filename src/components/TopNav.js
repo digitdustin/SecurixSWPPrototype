@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import SearchBar from './SearchBar'
 import AProfilePicture from '../assets/img/AProfilePicture.png'
@@ -31,8 +31,10 @@ import {
     AlignBoxMiddleCenter32,
     Help32,
 } from '@carbon/icons-react';
+import {RoleContext, roles} from '../contexts/role-context'
 
 function TopNav() {
+    const {role, toggleRole} = useContext(RoleContext);
 
     return (
       <div className="container">
@@ -51,7 +53,7 @@ function TopNav() {
             </HeaderName>
             <Search style={{maxWidth: 650, backgroundColor: '#2e2e2e'}} placeholder="What are you looking for?" size="xl" id="portal-search" light/>
             <HeaderGlobalBar>
-              <Button renderIcon={View32} size="default" style={{backgroundColor: '#2e2e2e'}} title="Switch to Admin View">Switch to Admin View</Button>
+              <Button renderIcon={View32} size="default" style={{backgroundColor: '#2e2e2e'}} title="Toggle Role" onClick={toggleRole}>{role === roles.user ? "View as Admin" : "View as User"}</Button>
               <HeaderGlobalAction aria-label="Bookmarks" onClick={() => {}}>
                 <Bookmark20 />
               </HeaderGlobalAction>
