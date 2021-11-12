@@ -6,6 +6,6 @@ export const roles = {
 }
 
 export const RoleContext = React.createContext({
-    role: roles.user,
+    role: Number( localStorage.getItem("role") ),
     toggleRole: () => {},
 });
