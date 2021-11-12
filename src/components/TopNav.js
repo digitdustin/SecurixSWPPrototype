@@ -32,6 +32,7 @@ import {
     Help32,
 } from '@carbon/icons-react';
 import {RoleContext, roles} from '../contexts/role-context'
+import RoleNotification from './RoleNotification'
 
 function TopNav() {
     const {role, toggleRole} = useContext(RoleContext);
@@ -120,6 +121,7 @@ function TopNav() {
               </SideNavItems>
             </SideNav>
           </Header>
+          {role == roles.user ? <RoleNotification /> : <></>}
         </>
       )}
     />
