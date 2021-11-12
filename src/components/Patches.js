@@ -1,7 +1,61 @@
+import axios from 'axios';
+import { useQuery } from 'react-query';
 import MainScreen from "./MainScreen.js";
 import '../assets/css/Patches.css';
 
 const Patches = () => {
+  
+  const fetchData = async () => {
+      const res = await axios.get('http://localhost:3030/files/PatchInfo.JSON');
+      return res?.data;
+  }
+
+  const patchList = useQuery( 'patchList',  fetchData );
+
+  function getPatchTableData() {
+      if(patchList.isLoading) {
+        return (
+            <tr class="whitespace-nowrap">
+                <td class="px-6 py-4 text-sm text-gray-500">
+                    Loading more data...
+                </td>
+            </tr>
+            );
+      }
+      else if(patchList.isError) {
+        return (
+            <tr class="whitespace-nowrap">
+                <td class="px-6 py-4 text-sm text-gray-500">
+                    Error loading patches...
+                </td>
+            </tr>
+        );
+      }
+      return (
+            patchList.data.patches.map( (patch) => {
+            return (
+                <tr class="whitespace-nowrap">
+                    <td class="px-6 py-4 text-sm text-gray-500">
+                        {patch.id}
+                    </td>
+                    <td class="px-6 py-4">
+                        {patch.name}
+                    </td>
+                    <td class="px-6 py-4">
+                        {patch.software}
+                    </td>
+                    <td class="px-6 py-4 text-sm text-gray-500">
+                        {patch.created_at}
+                    </td>
+                    <td class="px-6 py-4">
+                        {patch.download}
+                    </td>
+                </tr>
+            );
+        } )
+      );
+  }
+
   return (
     <MainScreen title="PATCHES">
       <div class="container flex justify-center mx-auto">
@@ -98,6 +152,7 @@ const Patches = () => {
                                     </a>
                                 </td>
                             </tr>
+                            { getPatchTableData() }
                         </tbody>
                     </table>
                 </div>
