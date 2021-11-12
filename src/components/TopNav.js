@@ -30,91 +30,92 @@ import {
 function TopNav() {
 
     return (
-        <HeaderContainer render={ ({ isSideNavExpanded, onClickSideNavExpand }) => (
-            <>
-        <Header aria-label="ATLAS Platform Name" >
+      <div className="container">
+    <HeaderContainer
+      render={({ isSideNavExpanded, onClickSideNavExpand }) => (
+        <>
+          <Header aria-label="IBM Platform Name">
             <SkipToContent />
             <HeaderMenuButton
-                aria-label="Open menu"
-                isCollapsible
-                onClick={onClickSideNavExpand}
-                isActive={isSideNavExpanded}
+              aria-label="Open menu"
+              onClick={onClickSideNavExpand}
+              isActive={isSideNavExpanded}
             />
-            <HeaderName href='#' prefix="Atlas">
-                [SWIS]
+            <HeaderName href="#" prefix="IBM">
+              [Platform]
             </HeaderName>
             <HeaderGlobalBar>
-                <HeaderGlobalAction aria-label="Bookmarks">
-                    <Bookmark20 />
-                </HeaderGlobalAction>
-                <HeaderGlobalAction aria-label="Quick Links">
-                    <Help20 />
-                </HeaderGlobalAction>
-                <HeaderGlobalAction aria-label="Notifications">
-                    <Notification20 />
-                </HeaderGlobalAction>
-                <HeaderGlobalAction aria-label="Profile">
-                    <UserAvatar20 />
-                </HeaderGlobalAction>
+              <HeaderGlobalAction aria-label="Bookmarks" onClick={() => {}}>
+                <Bookmark20 />
+              </HeaderGlobalAction>
+              <HeaderGlobalAction aria-label="Quick Links" onClick={() => {}}>
+                <Help20 />
+              </HeaderGlobalAction>
+              <HeaderGlobalAction aria-label="Notifictions" onClick={() => {}}>
+                <Notification20 />
+              </HeaderGlobalAction>
+              <HeaderGlobalAction aria-label="Profile" onClick={() => {}}>
+                <UserAvatar20 />
+              </HeaderGlobalAction>
             </HeaderGlobalBar>
-            <SideNav 
-                aria-label="Side navigation" 
-                expanded={isSideNavExpanded} 
-                isRail
-                onOverlayClick={onClickSideNavExpand}
-            >
-            <SideNavItems>
-              <SideNavMenu renderIcon={Home32} title="Home" large>
-                <SideNavMenuItem href="javascript:void(0)">
+            <SideNav aria-label="Side navigation" expanded={isSideNavExpanded}>
+              <SideNavItems>
+                <SideNavMenu renderIcon={Home32} title="Home" large>
+                  <SideNavMenuItem href="javascript:void(0)">
+                    Link
+                  </SideNavMenuItem>
+                  <SideNavMenuItem
+                    aria-current="page"
+                    href="javascript:void(0)"
+                  >
+                    Link
+                  </SideNavMenuItem>
+                  <SideNavMenuItem href="javascript:void(0)">
+                    Link
+                  </SideNavMenuItem>
+                </SideNavMenu>
+                <SideNavMenu renderIcon={UserMultiple32} title="Roles" large>
+                  <SideNavMenuItem href="javascript:void(0)">
+                    Link
+                  </SideNavMenuItem>
+                  <SideNavMenuItem
+                    aria-current="page"
+                    href="javascript:void(0)"
+                  >
+                    Link
+                  </SideNavMenuItem>
+                  <SideNavMenuItem href="javascript:void(0)">
+                    Link
+                  </SideNavMenuItem>
+                </SideNavMenu>
+                <SideNavMenu renderIcon={RequestQuote32} title="Forms" large>
+                  <SideNavMenuItem href="javascript:void(0)">
+                    Link
+                  </SideNavMenuItem>
+                  <SideNavMenuItem
+                    aria-current="page"
+                    href="javascript:void(0)"
+                  >
+                    Link
+                  </SideNavMenuItem>
+                  <SideNavMenuItem href="javascript:void(0)">
+                    Link
+                  </SideNavMenuItem>
+                </SideNavMenu>
+                <SideNavLink renderIcon={Home32} href="javascript:void(0)" large>
                   Link
-                </SideNavMenuItem>
-                <SideNavMenuItem href="javascript:void(0)">
+                </SideNavLink>
+                <SideNavLink renderIcon={Home32} href="javascript:void(0)" large>
                   Link
-                </SideNavMenuItem>
-                <SideNavMenuItem href="javascript:void(0)">
-                  Link
-                </SideNavMenuItem>
-              </SideNavMenu>
-              <SideNavMenu
-                renderIcon={UserMultiple32}
-                title="Roles"
-                isActive={true}
-                large>
-                <SideNavMenuItem href="javascript:void(0)">
-                  Link
-                </SideNavMenuItem>
-                <SideNavMenuItem aria-current="page" href="javascript:void(0)">
-                  Link
-                </SideNavMenuItem>
-                <SideNavMenuItem href="javascript:void(0)">
-                  Link
-                </SideNavMenuItem>
-              </SideNavMenu>
-              <SideNavMenu renderIcon={RequestQuote32} title="Forms" large>
-                <SideNavMenuItem href="javascript:void(0)">
-                  Link
-                </SideNavMenuItem>
-                <SideNavMenuItem href="javascript:void(0)">
-                  Link
-                </SideNavMenuItem>
-                <SideNavMenuItem href="javascript:void(0)">
-                  Link
-                </SideNavMenuItem>
-              </SideNavMenu>
-              <SideNavLink renderIcon={Help20} href="javascript:void(0)" large>
-                Link
-              </SideNavLink>
-              <SideNavLink renderIcon={Help20} href="javascript:void(0)" large>
-                Link
-              </SideNavLink>
-            </SideNavItems>
-          </SideNav>
-        </Header>
-        <p>Hello World</p>
+                </SideNavLink>
+              </SideNavItems>
+            </SideNav>
+          </Header>
         </>
-  )}
-/>
-    )
+      )}
+    />
+  </div>
+  )
 }
 
 export default TopNav
