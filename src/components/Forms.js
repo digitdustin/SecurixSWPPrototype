@@ -12,13 +12,14 @@ const Forms = () => {
                   Forms
                 </h1>
                 <p style={{marginBottom: 20}}>View, fill out, and download all Atlas forms.</p>
-                <div style={{backgroundColor: 'white', padding : 20}}>
+                <div style={{backgroundColor: 'white', padding : 20, marginBottom: 20}}>
                   <ContentSwitcher light style={{marginBottom: 20}}>
-                    <Switch name="allforms" text="All Forms"></Switch>
+                    <Switch name="allforms" text="All Forms (24)"></Switch>
                     <Switch name="action" text="Awaiting Action (1)"></Switch>
                   </ContentSwitcher>
                   <FormHolder />
                 </div>
+                <p>Don't see what you need? <a>Request a form.</a></p>
             </div>
         </div>
     </div>
