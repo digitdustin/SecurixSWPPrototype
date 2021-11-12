@@ -228,7 +228,7 @@ function FormHolder() {
 
     return (
         <div style={{width: '100%'}}>
-        <DataTable rows={currentForms} headers={headers} isSortable>
+        <DataTable rows={currentForms} headers={headers}>
             {({ 
                 rows, 
                 headers, 
