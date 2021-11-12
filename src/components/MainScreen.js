@@ -2,11 +2,11 @@ import '../assets/css/MainScreen.css';
 
 const MainScreen = ({title, children}) => {
   return (
-    <div className="row-span-1">
+    <div style={{width: '100%', height: '100vh', marginTop: 60}}>
       <div className="page">
         {title && (
           <>
-            <h1 className="heading">{title}</h1>
+            <h1>{title}</h1>
             <hr />
           </>
         )}
