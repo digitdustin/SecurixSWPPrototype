@@ -83,7 +83,7 @@ function WhatsNew() {
   {
     title: 'Zoom How-To',
     date: 'September 3, 2021',
-    content: 'New how-to on sharing screen Zoom!',
+    content: 'New how-to on sharing screen Zoom in the "How-Tos" tab.',
     link: '/how-tos',
     icon: <DocumentUnknown32 />,
     backgroundColor: purple[20]
@@ -106,7 +106,7 @@ function WhatsNew() {
                 display: 'block',
                 width: '10%',
                 transitionDuration: '0.3s',
-                height: '150%',
+                height: '100%',
                 marginRight: 15,
                 backgroundColor: gray[10]
               }}>
