@@ -15,6 +15,7 @@ import Help from './Help';
 import DigitalClock from './DigitalClock';
 import Quicklinks from './Quicklinks';
 import '../../assets/css/Dashboard.css';
+import { white } from '@carbon/colors';
 
 /* This example requires Tailwind CSS v2.0+ */
 const Dashboard = () => {
@@ -32,7 +33,9 @@ const Dashboard = () => {
         <div class="bx--row">
           <div class="bx--col-max">
             <div class="whatsnew">
-              <Tile>
+              <Tile style={{
+                  backgroundColor: white
+                }}>
                 <h1 className="text-3xl font-bold text-gray-900" style={{paddingBottom: '3%', fontSize: 20}}>What's New?</h1>
                 <WhatsNew />
               </Tile>

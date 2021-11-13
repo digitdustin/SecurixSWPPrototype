@@ -21,7 +21,7 @@ import {
     DocumentTasks32,
     DocumentUnknown32
 } from '@carbon/icons-react';
-import { green, blue, warmGray, yellow, red, purple } from '@carbon/colors';
+import { green, blue, warmGray, yellow, red, purple, gray } from '@carbon/colors';
 
 function WhatsNew() {
   const items = [
@@ -107,7 +107,8 @@ function WhatsNew() {
                 width: '10%',
                 transitionDuration: '0.3s',
                 height: '150%',
-                marginRight: 15
+                marginRight: 15,
+                backgroundColor: gray[10]
               }}>
               <CardHeader
               action={

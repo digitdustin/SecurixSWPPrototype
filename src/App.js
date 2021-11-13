@@ -48,7 +48,6 @@ function Content() {
     <div className="App" style={{display: 'flex', flexDirection: 'column', width: '100%', height: '100%', backgroundColor: '#efefef'}}>
     <BrowserRouter>
         <TopNav />
-        <TaskModal />
 
         <main>
           <Route path='/' component={Dashboard} exact/>
