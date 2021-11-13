@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import SearchBar from './SearchBar'
 import AProfilePicture from '../assets/img/AProfilePicture.png'
@@ -15,7 +15,9 @@ import {
     SideNavMenuItem,
     SideNavLink,
     SideNavIcon,
-    HeaderContainer
+    HeaderContainer,
+    Search,
+    Button
 } from 'carbon-components-react'
 import {
     Bookmark20,
@@ -25,26 +27,34 @@ import {
     Home32,
     UserMultiple32,
     RequestQuote32,
+    View32,
+    AlignBoxMiddleCenter32,
+    Help32,
 } from '@carbon/icons-react';
+import {RoleContext, roles} from '../contexts/role-context'
+import RoleNotification from './RoleNotification'
 
 function TopNav() {
+    const {role, toggleRole} = useContext(RoleContext);
 
     return (
       <div className="container">
     <HeaderContainer
       render={({ isSideNavExpanded, onClickSideNavExpand }) => (
         <>
-          <Header aria-label="IBM Platform Name">
+          <Header aria-label="SWIS Portal Name">
             <SkipToContent />
             <HeaderMenuButton
               aria-label="Open menu"
               onClick={onClickSideNavExpand}
               isActive={isSideNavExpanded}
             />
-            <HeaderName href="#" prefix="IBM">
-              [Platform]
+            <HeaderName href="#" prefix="Atlas">
+              [SWIS]
             </HeaderName>
+            <Search style={{maxWidth: 650, backgroundColor: '#2e2e2e'}} placeholder="What are you looking for?" size="xl" id="portal-search" light/>
             <HeaderGlobalBar>
+              <Button renderIcon={View32} size="default" style={{backgroundColor: '#2e2e2e'}} title="Toggle Role" onClick={toggleRole}>{role === roles.user ? "View as Admin" : "View as User"}</Button>
               <HeaderGlobalAction aria-label="Bookmarks" onClick={() => {}}>
                 <Bookmark20 />
               </HeaderGlobalAction>
@@ -91,15 +101,16 @@ function TopNav() {
                     Link
                   </SideNavMenuItem>
                 </SideNavMenu>
-                <SideNavLink renderIcon={Home32} href="javascript:void(0)" large>
-                  Link
+                <SideNavLink renderIcon={AlignBoxMiddleCenter32} href="javascript:void(0)" large>
+                  How-Tos
                 </SideNavLink>
-                <SideNavLink renderIcon={Home32} href="javascript:void(0)" large>
-                  Link
+                <SideNavLink renderIcon={Help32} href="javascript:void(0)" large>
+                  FAQ
                 </SideNavLink>
               </SideNavItems>
             </SideNav>
           </Header>
+          {role == roles.user ? <RoleNotification /> : <></>}
         </>
       )}
     />
