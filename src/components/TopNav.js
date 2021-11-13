@@ -2,25 +2,25 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import SearchBar from './SearchBar'
 import AProfilePicture from '../assets/img/AProfilePicture.png'
-import { 
-    Header, 
-    HeaderName, 
-    HeaderGlobalBar, 
-    HeaderGlobalAction, 
+import {
+    Header,
+    HeaderName,
+    HeaderGlobalBar,
+    HeaderGlobalAction,
     HeaderMenuButton,
     SkipToContent,
-    SideNav, 
-    SideNavItems, 
-    SideNavMenu, 
+    SideNav,
+    SideNavItems,
+    SideNavMenu,
     SideNavMenuItem,
     SideNavLink,
     SideNavIcon,
     HeaderContainer
 } from 'carbon-components-react'
-import { 
-    Bookmark20, 
-    Help20, 
-    UserAvatar20, 
+import {
+    Bookmark20,
+    Help20,
+    UserAvatar20,
     Notification20,
     Home32,
     UserMultiple32,
@@ -60,20 +60,9 @@ function TopNav() {
             </HeaderGlobalBar>
             <SideNav aria-label="Side navigation" expanded={isSideNavExpanded}>
               <SideNavItems>
-                <SideNavMenu renderIcon={Home32} title="Home" large>
-                  <SideNavMenuItem href="javascript:void(0)">
-                    Link
-                  </SideNavMenuItem>
-                  <SideNavMenuItem
-                    aria-current="page"
-                    href="javascript:void(0)"
-                  >
-                    Link
-                  </SideNavMenuItem>
-                  <SideNavMenuItem href="javascript:void(0)">
-                    Link
-                  </SideNavMenuItem>
-                </SideNavMenu>
+              <SideNavLink renderIcon={Home32} href="/" large>
+                Home
+              </SideNavLink>
                 <SideNavMenu renderIcon={UserMultiple32} title="Roles" large>
                   <SideNavMenuItem href="javascript:void(0)">
                     Link

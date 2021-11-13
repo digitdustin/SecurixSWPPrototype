@@ -1,6 +1,6 @@
 import './App.css';
 import { Route, BrowserRouter } from "react-router-dom";
-import Dashboard from './components/Dashboard.js';
+import Dashboard from './components/Dashboard/Dashboard.js';
 import Forms from './components/Forms.js';
 import Header from './components/Header.js';
 import Patches from './components/Patches.js';
@@ -17,10 +17,10 @@ function App() {
     <BrowserRouter>
         <TopNav />
         <BasePage />
-        
+
         <main>
           <Route path='/' exact>
-            
+
           </Route>
           <Route path='/forms' component={Forms} exact/>
           <Route path='/patches' component={Patches} exact/>
