@@ -16,12 +16,8 @@ function App() {
     <div className="App" style={{display: 'flex', flexDirection: 'column', width: '100%', height: '100%', backgroundColor: '#efefef'}}>
     <BrowserRouter>
         <TopNav />
-        <BasePage />
-
         <main>
-          <Route path='/' exact>
-
-          </Route>
+          <Route path='/' component={Dashboard} exac/>
           <Route path='/forms' component={Forms} exact/>
           <Route path='/patches' component={Patches} exact/>
           <Route path='/how-tos' component={HowTos} exact/>

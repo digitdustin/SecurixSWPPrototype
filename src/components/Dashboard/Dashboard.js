@@ -33,7 +33,7 @@ const Dashboard = () => {
           <div class="bx--col-max">
             <div class="whatsnew">
               <Tile>
-                <h1 className="text-3xl font-bold text-gray-900" style={{paddingBottom: 25, fontSize: 20, fontWeight: 'bold'}}>What's New?</h1>
+                <h1 className="text-3xl font-bold text-gray-900" style={{paddingBottom: '4%', fontSize: 20, fontWeight: 'bold'}}>What's New?</h1>
                 <WhatsNew />
               </Tile>
             </div>
@@ -41,25 +41,24 @@ const Dashboard = () => {
           </div>
           <div class="bx--row">
             <div class="bx--col-sm-2">
-              <div class="time" style={{paddingTop: 30, paddingBottom: 30}}>
+              <div class="time" style={{paddingTop: "5%", paddingBottom: "5%"}}>
                 <DigitalClock />
               </div>
             </div>
             <div class="bx--col-sm-2">
-              <div class="helpdesk" style={{paddingTop: 30, paddingBottom: 30}}>
+              <div class="helpdesk" style={{paddingTop: "3.5%", paddingBottom: "3%"}}>
+                <div class="quicklinks" style={{paddingBottom: '10%'}}>
+                  <Card style={{padding: '5%'}}>
+                    <h1 className="text-3xl font-bold text-gray-900" style={{paddingBottom: '8%', fontSize: 20, fontWeight: 'bold'}}>Quick Links</h1>
+                    <Quicklinks />
+                  </Card>
+                </div>
                 <Help />
               </div>
             </div>
           </div>
           <div class="bx--row">
-            <div class="bx--col-lg-16">
-              <div class="quicklinks">
-                <Tile>
-                  <h1 className="text-3xl font-bold text-gray-900" style={{paddingBottom: 25, fontSize: 20, fontWeight: 'bold'}}>Quick Links</h1>
-                  <Quicklinks />
-                </Tile>
-              </div>
-            </div>
+
           </div>
         </div>
         {/* /End replace */}

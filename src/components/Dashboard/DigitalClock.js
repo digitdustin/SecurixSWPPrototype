@@ -27,15 +27,13 @@ function DigitalClock() {
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           Today is
-          <IconButton aria-label="settings">
-            <CalendarTodayIcon />
-          </IconButton>
         </Typography>
-        <Card>
+        <br />
+        <Card> <br />
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <StaticDatePicker
               displayStaticWrapperAs="desktop"
-              openTo="year"
+              openTo="day"
               value={value}
               onChange={(newValue) => {
                 setValue(newValue);
