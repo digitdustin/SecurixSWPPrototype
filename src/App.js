@@ -17,7 +17,7 @@ function App() {
     <BrowserRouter>
         <TopNav />
         <main>
-          <Route path='/' component={Dashboard} exac/>
+          <Route path='/' component={Dashboard} exact/>
           <Route path='/forms' component={Forms} exact/>
           <Route path='/patches' component={Patches} exact/>
           <Route path='/how-tos' component={HowTos} exact/>

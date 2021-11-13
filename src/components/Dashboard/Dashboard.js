@@ -33,7 +33,7 @@ const Dashboard = () => {
           <div class="bx--col-max">
             <div class="whatsnew">
               <Tile>
-                <h1 className="text-3xl font-bold text-gray-900" style={{paddingBottom: '4%', fontSize: 20, fontWeight: 'bold'}}>What's New?</h1>
+                <h1 className="text-3xl font-bold text-gray-900" style={{paddingBottom: '3%', fontSize: 20}}>What's New?</h1>
                 <WhatsNew />
               </Tile>
             </div>
@@ -49,7 +49,7 @@ const Dashboard = () => {
               <div class="helpdesk" style={{paddingTop: "3.5%", paddingBottom: "3%"}}>
                 <div class="quicklinks" style={{paddingBottom: '10%'}}>
                   <Card style={{padding: '5%'}}>
-                    <h1 className="text-3xl font-bold text-gray-900" style={{paddingBottom: '8%', fontSize: 20, fontWeight: 'bold'}}>Quick Links</h1>
+                    <h1 className="text-3xl font-bold text-gray-900" style={{paddingBottom: '8%', fontSize: 20}}>Quick Links</h1>
                     <Quicklinks />
                   </Card>
                 </div>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
+import { styled, makeStyles } from '@mui/material/styles';
 import {
   Card,
   CardHeader,
@@ -11,6 +11,10 @@ import {
 } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import {
+    Phone20,
+    Email20
+} from '@carbon/icons-react';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -31,14 +35,13 @@ function Help() {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{maxWidth: 400}}>
       <CardHeader
-        title="Need Help?"
-        action={
-          <IconButton aria-label="settings">
+        title='Need Help?'
+        action=
+          <IconButton aria-label="help">
             <HelpIcon />
           </IconButton>
-        }
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
@@ -58,10 +61,16 @@ function Help() {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>
-            phone: (305) 299-7312
+            <IconButton aria-label="phone">
+              <Phone20 />
+            </IconButton>
+            (305) 299-7312
           </Typography>
           <Typography paragraph>
-            email: helpdesk@atlas.com
+            <IconButton aria-label="email">
+              <Email20 />
+            </IconButton>
+            helpdesk@atlas.com
           </Typography>
           <Typography>
             hours:

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@carbon/colors": "^10.34.0",
     "@craco/craco": "^6.4.0",
     "@date-io/date-fns": "^2.11.0",
     "@emotion/react": "^11.5.0",

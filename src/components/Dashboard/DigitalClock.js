@@ -1,22 +1,26 @@
 import * as React from 'react';
 import Clock from 'react-live-clock';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import IconButton from '@mui/material/IconButton';
-import { TextField } from '@mui/material';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import {
+  TextField,
+  Card,
+  CardHeader,
+  CardContent,
+  Typography,
+  IconButton
+ } from '@mui/material';
+import {
+  LocalizationProvider,
+  StaticDatePicker
+} from '@mui/lab';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import StaticDatePicker from '@mui/lab/StaticDatePicker';
 import { Tile } from "carbon-components-react";
 
 function DigitalClock() {
   const [value, setValue] = React.useState(new Date());
 
   return (
-    <Card sx={{ minWidth: 650}} variant="outlined"
+    <Card sx={{minWidth: 650}}
       style={{
         display: 'block',
         width: '70%',
@@ -29,7 +33,7 @@ function DigitalClock() {
           Today is
         </Typography>
         <br />
-        <Card> <br />
+        <Card variant="outlined"> <br />
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <StaticDatePicker
               displayStaticWrapperAs="desktop"
