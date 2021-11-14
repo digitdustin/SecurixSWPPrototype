@@ -104,7 +104,7 @@ function TopNav() {
                 <SideNavLink renderIcon={AlignBoxMiddleCenter32} href="javascript:void(0)" large>
                   How-Tos
                 </SideNavLink>
-                <SideNavLink renderIcon={Help32} href="javascript:void(0)" large>
+                <SideNavLink renderIcon={Help32} href="/faq" large>
                   FAQ
                 </SideNavLink>
               </SideNavItems>
