@@ -30,7 +30,7 @@ function Quicklinks() {
           </Stack>
           <Stack direction="row" spacing={1}>
             <Chip icon={<UserAvatar20 />} label="Profile" component="a" href='/' clickable/>
-            <Chip icon={<Help20 />} label="FAQa" variant="outlined" component="a" href='/faq' clickable/>
+            <Chip icon={<Help20 />} label="FAQ" variant="outlined" component="a" href='/faq' clickable/>
           </Stack>
         </Stack>
       </Tile>

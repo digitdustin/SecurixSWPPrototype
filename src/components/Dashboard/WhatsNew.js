@@ -48,7 +48,7 @@ function WhatsNew() {
     title: '1080 Form',
     date: 'October 29, 2021',
     content: 'The 1080 Form has now been added to SWIS to the Forms.',
-    link: "https://www.rd.com/article/common-hand-gestures-rude-in-other-countries/",
+    link: "/forms",
     icon: <RequestQuote24 />,
     backgroundColor: green[30]
   },
@@ -57,6 +57,7 @@ function WhatsNew() {
     title: 'Did You Know?',
     date: 'October 19, 2021',
     content: 'Some common hand gestures are offensive in other countries.',
+    link: "https://www.rd.com/article/common-hand-gestures-rude-in-other-countries/",
     icon: <Idea24 />,
     backgroundColor: yellow
   },
