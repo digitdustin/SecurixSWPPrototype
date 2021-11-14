@@ -8,12 +8,14 @@ import {
   Typography,
   IconButton,
   Collapse,
+  Divider
 } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
     Phone20,
-    Email20
+    Email20,
+    Time20
 } from '@carbon/icons-react';
 
 const ExpandMore = styled((props) => {
@@ -73,10 +75,11 @@ function Help() {
             helpdesk@atlas.com
           </Typography>
           <Typography>
-            hours:
-          </Typography>
-          <Typography>
-            <pre class="tab4">monday - friday                  8am - 5pm</pre>
+            <pre class="tab4">
+              <IconButton aria-label="hours">
+                <Time20 />
+              </IconButton>
+              monday - friday   |   8am - 5pm</pre>
           </Typography>
         </CardContent>
       </Collapse>
