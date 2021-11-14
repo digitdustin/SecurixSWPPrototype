@@ -16,7 +16,7 @@ import { TaskContext } from './contexts/task-context';
 
 function App() {
   const [role, setRole] = useState( Number(localStorage.getItem("role")) );
-  const [task, setTask] = useState(0);
+  const [task, setTask] = useState(1);
   const [times, setTimes] = useState([]);
 
   const toggleRole = () => {
