@@ -6,7 +6,7 @@ import {
   CardActions,
   CardContent,
   Button,
-  Typography,
+  Typography
 } from '@mui/material';
 import { ScrollMenu } from "react-horizontal-scrolling-menu";
 import IconButton from '@mui/material/IconButton';
@@ -26,6 +26,7 @@ import { green, blue, warmGray, yellow, red, purple, gray } from '@carbon/colors
 function WhatsNew() {
   const items = [
   {
+    id: 1,
     title: 'Announcement',
     date: 'November 16, 2021',
     content: 'Notice the new look? SWIS is now Atlas!',
@@ -34,6 +35,7 @@ function WhatsNew() {
     backgroundColor: red[50]
   },
   {
+    id: 2,
     title: 'MS Word Patch',
     date: 'November 1, 2021',
     content: 'New patch for Microsoft Word available!',
@@ -42,6 +44,7 @@ function WhatsNew() {
     backgroundColor: blue[50]
   },
   {
+    id: 3,
     title: '1080 Form',
     date: 'October 29, 2021',
     content: 'The 1080 Form has now been added to SWIS to the Forms.',
@@ -50,6 +53,7 @@ function WhatsNew() {
     backgroundColor: green[30]
   },
   {
+    id: 4,
     title: 'Did You Know?',
     date: 'October 19, 2021',
     content: 'Some common hand gestures are offensive in other countries.',
@@ -57,6 +61,7 @@ function WhatsNew() {
     backgroundColor: yellow
   },
   {
+    id: 5,
     title: 'Announcement',
     date: 'October 15, 2021',
     content: 'Keep a look out. SWIS will be rebranding very soon!',
@@ -65,6 +70,7 @@ function WhatsNew() {
     backgroundColor: red[50]
   },
   {
+    id: 6,
     title: 'Rebranding Contest',
     date: 'October 10, 2021',
     content: 'Submit your new portal name idea and a logo to match.',
@@ -73,6 +79,7 @@ function WhatsNew() {
     backgroundColor: purple[50]
   },
   {
+    id: 7,
     title: 'SWIS Survey',
     date: 'September 18, 2021',
     content: 'Survey out. Let us know your thoughts on the SWIS portal.',
@@ -81,6 +88,7 @@ function WhatsNew() {
     backgroundColor: blue[40]
   },
   {
+    id: 8,
     title: 'Zoom How-To',
     date: 'September 3, 2021',
     content: 'New how-to on sharing screen Zoom in the "How-Tos" tab.',
@@ -89,6 +97,7 @@ function WhatsNew() {
     backgroundColor: purple[20]
   },
   {
+    id: 9,
     title: 'Did You Know?',
     date: 'August 23, 2021',
     content: '40 percent of human jobs could be replaced by AI in the future.',
@@ -99,9 +108,10 @@ function WhatsNew() {
   ];
 
   return (
+      <div>
         <ScrollMenu>
           {items.map((card) => (
-            <Card sx={{ minWidth: 275}} variant="outlined"
+            <Card sx={{ minWidth: 275}} variant="outlined" id={card.id}
               style={{
                 display: 'block',
                 width: '10%',
@@ -143,6 +153,7 @@ function WhatsNew() {
           )
           )}
         </ScrollMenu>
+      </div>
   );
 };
 

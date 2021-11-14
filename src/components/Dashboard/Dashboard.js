@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Card from "@material-ui/core/Card";
+import { Card, Fab } from "@mui/material";
 import {
   Tile,
   ExpandableTile,
@@ -16,6 +16,9 @@ import DigitalClock from './DigitalClock';
 import Quicklinks from './Quicklinks';
 import '../../assets/css/Dashboard.css';
 import { white } from '@carbon/colors';
+import {
+    ChevronUp32
+} from '@carbon/icons-react';
 
 /* This example requires Tailwind CSS v2.0+ */
 const Dashboard = () => {
@@ -23,7 +26,7 @@ const Dashboard = () => {
     <div>
       <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="dashboard text-3xl font-bold text-gray-900">Dashboard</h1>
+          <h1 className="dashboard text-3xl font-bold text-gray-900" id="dashboard">Dashboard</h1>
         </div>
       </header>
       <main>
@@ -60,8 +63,17 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div class="bx--row">
-
+          <div>
+          <Fab color="primary" aria-label="top" href='#dashboard' style={{
+            margin: 0,
+            top: 'auto',
+            right: 20,
+            bottom: 20,
+            left: 'auto',
+            position: 'fixed',
+            }}>
+            <ChevronUp32 />
+          </Fab>
           </div>
         </div>
         {/* /End replace */}
