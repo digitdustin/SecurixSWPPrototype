@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.tile{
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    min-height: 10.5rem;
+    width: 20rem;
+    text-align: center;
+    vertical-align: middle;
+    flex-direction: column;
+}
+
+.tile__header{
+    font-size: 14pt;
+    font-weight: 600;
+    word-wrap: break-word;
+}
