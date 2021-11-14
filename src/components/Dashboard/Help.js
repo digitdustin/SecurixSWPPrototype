@@ -35,7 +35,7 @@ function Help() {
   };
 
   return (
-    <Card sx={{maxWidth: 400}}>
+    <Card sx={{}}>
       <CardHeader
         title='Need Help?'
         action=

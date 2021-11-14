@@ -23,45 +23,33 @@ import {
 /* This example requires Tailwind CSS v2.0+ */
 const Dashboard = () => {
   return (
-    <div>
-      <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="dashboard text-3xl font-bold text-gray-900" id="dashboard">Dashboard</h1>
-        </div>
-      </header>
-      <main>
-      {/* Replace with your content */}
-
-      <div class="bx--grid">
+    <div className="bx--grid" style={{height: 'calc(100vh - 30px)', paddingTop: 50, paddingBottom: 80, overflow: 'scroll'}}>
         <div class="bx--row">
-          <div class="bx--col-max">
-            <div class="whatsnew">
+        <div className="bx--offset-lg-2 bx--col-lg-10">
+                <h1 style={{marginBottom: 10}}>
+                  Dashboard
+                </h1>
+                <p style={{marginBottom: 20}}>Stay up to date with announcements about Atlas.</p>
               <Tile style={{
-                  backgroundColor: white
+                  backgroundColor: white,
+                  marginBottom: 20
                 }}>
-                <h1 className="text-3xl font-bold text-gray-900" style={{paddingBottom: '3%', fontSize: 20}}>What's New?</h1>
+                <h1 className="text-3xl font-bold text-gray-900" style={{marginBottom: 10, fontSize: 20}}>What's New?</h1>
                 <WhatsNew />
               </Tile>
-            </div>
-          </div>
-          </div>
-          <div class="bx--row">
-            <div class="bx--col-sm-2">
-              <div class="time" style={{paddingTop: "5%", paddingBottom: "5%"}}>
+              <div style={{display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'flex-start'}}>
                 <DigitalClock />
-              </div>
-            </div>
-            <div class="bx--col-sm-2">
-              <div class="helpdesk" style={{paddingTop: "3.5%", paddingBottom: "3%"}}>
-                <div class="quicklinks" style={{paddingBottom: '10%'}}>
-                  <Card style={{padding: '5%'}}>
-                    <h1 className="text-3xl font-bold text-gray-900" style={{paddingBottom: '8%', fontSize: 20}}>Quick Links</h1>
-                    <Quicklinks />
-                  </Card>
-                </div>
+              <div>
+                <Card style={{padding: 20, width: 500, marginBottom: 20}}>
+                  <h1 className="text-3xl font-bold text-gray-900" style={{paddingBottom: '8%', fontSize: 20}}>Quick Links</h1>
+                  <Quicklinks />
+                </Card>
                 <Help />
               </div>
-            </div>
+              </div>
+
+              
+                  
           </div>
           <div>
           <Fab color="primary" aria-label="top" href='#dashboard' style={{
@@ -74,10 +62,9 @@ const Dashboard = () => {
             }}>
             <ChevronUp32 />
           </Fab>
+          
           </div>
         </div>
-        {/* /End replace */}
-      </main>
     </div>
   )
 }
