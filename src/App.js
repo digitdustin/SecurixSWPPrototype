@@ -16,20 +16,21 @@ import TaskModal from './components/TaskModal';
 import { TaskContext } from './contexts/task-context';
 
 function App() {
-  const [role, setRole] = useState( Number(localStorage.getItem("role")) );
-  const [task, setTask] = useState(0);
+  const [role, setRole] = useState( localStorage.getItem("role") ? Number(localStorage.getItem("role")) : roles.admin );
+  const [task, setTask] = useState( localStorage.getItem("currentTask") ? Number(localStorage.getItem("currentTask")) : 1);
   const [times, setTimes] = useState([]);
 
   const toggleRole = () => {
-    localStorage.setItem("role", role === roles.user ? roles.admin : roles.user );
-    setRole(role => (role === roles.user ? roles.admin : roles.user));
+    let newRole = (role) => role === roles.user ? roles.admin : roles.user;
+    localStorage.setItem("role", newRole(role));
+    setRole(role => newRole(role));
   }
 
-  const changeTask = (num) => {
-    if(task === num) {
-      localStorage.set("currentTask", task+1);
+  const changeTask = (num = -1) => {
+    if(task === num || num === -1) {
+      localStorage.setItem("currentTask", task+1);
       setTask(task + 1);
-      localStorage.set("times", [...times, Date.now()]);
+      localStorage.setItem("times", [...times, Date.now()]);
       setTimes([...times, Date.now()]);
     }
   }
