@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Modal } from 'carbon-components-react'
 import Task1 from '../assets/img/task1.png'
 
@@ -15,13 +15,16 @@ const tasks = [
 ]
 
 function TaskModal() {
+    const [open, setOpen] = useState(true);
+
     return (
         <Modal
-            open
+            open={open}
             modalHeading={`Task Number ${tasks[1].number}`}
             modalLabel="Securix SWP Prototype"
             primaryButtonText={`Begin Task ${tasks[1].number}`}
             secondaryButtonText="Quit Simulation"
+            onRequestClose={() => {setOpen(false)}}
         >
             <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: '100%'}}>
             <img src={Task1} width={300} height={300}/>
