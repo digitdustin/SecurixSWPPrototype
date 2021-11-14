@@ -1,6 +1,6 @@
 import React from 'react';
 
 export const TaskContext = React.createContext({
-    currentTask: -1,
+    task: 1,
     changeTask: () => {}
 });
