@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import { Modal } from 'carbon-components-react'
+import React, { useContext, useState } from 'react'
+import { ComposedModal, ModalBody, ModalFooter, ModalHeader } from 'carbon-components-react'
 import Task1 from '../assets/img/task1.png'
+import { TaskContext } from '../contexts/task-context';
 
 const tasks = [
     {
@@ -15,22 +16,29 @@ const tasks = [
 ]
 
 function TaskModal() {
-    const [open, setOpen] = useState(true);
+    const {task, changeTask} = useContext(TaskContext);
 
     return (
-        <Modal
-            open={open}
-            modalHeading={`Task Number ${tasks[1].number}`}
-            modalLabel="Securix SWP Prototype"
-            primaryButtonText={`Begin Task ${tasks[1].number}`}
-            secondaryButtonText="Quit Simulation"
-            onRequestClose={() => {setOpen(false)}}
+        <ComposedModal
+            open={task % 2 === 1}
+            preventCloseOnClickOutside
         >
-            <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: '100%'}}>
-            <img src={Task1} width={300} height={300}/>
-            <p style={{marginBottom: '1rem', fontSize: 18}}>{tasks[1].description}</p>
-            </div>
-        </Modal>
+            <ModalHeader label="Securix SWP Prototype">
+                <h1>{`Task Number ${task}`}</h1>
+            </ModalHeader>
+
+            <ModalBody>
+                <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: '100%'}}>
+                <img src={Task1} width={300} height={300}/>
+                <p style={{marginBottom: '1rem', fontSize: 18}}>{tasks[Math.ceil(task/2)].description}</p>
+                </div>
+            </ModalBody>
+
+            <ModalFooter 
+                primaryButtonText={`Start Task ${task}`}
+                onRequestSubmit={ () => changeTask() }
+            />
+        </ComposedModal>
     )
 }
 

@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import SearchBar from './SearchBar'
 import AProfilePicture from '../assets/img/AProfilePicture.png'
+import { useHistory } from 'react-router-dom'
 import {
     Header,
     HeaderName,
@@ -30,12 +31,14 @@ import {
     View32,
     AlignBoxMiddleCenter32,
     Help32,
+    Download32
 } from '@carbon/icons-react';
 import {RoleContext, roles} from '../contexts/role-context'
 import RoleNotification from './RoleNotification'
 
 function TopNav() {
     const {role, toggleRole} = useContext(RoleContext);
+    const history = useHistory();
 
     return (
       <div className="container">
@@ -70,38 +73,19 @@ function TopNav() {
             </HeaderGlobalBar>
             <SideNav aria-label="Side navigation" expanded={isSideNavExpanded}>
               <SideNavItems>
-              <SideNavLink renderIcon={Home32} href="/" large>
-                Home
-              </SideNavLink>
-                <SideNavMenu renderIcon={UserMultiple32} title="Roles" large>
-                  <SideNavMenuItem href="javascript:void(0)">
-                    Link
-                  </SideNavMenuItem>
-                  <SideNavMenuItem
-                    aria-current="page"
-                    href="javascript:void(0)"
-                  >
-                    Link
-                  </SideNavMenuItem>
-                  <SideNavMenuItem href="javascript:void(0)">
-                    Link
-                  </SideNavMenuItem>
-                </SideNavMenu>
-                <SideNavMenu renderIcon={RequestQuote32} title="Forms" large>
-                  <SideNavMenuItem href="javascript:void(0)">
-                    Link
-                  </SideNavMenuItem>
-                  <SideNavMenuItem
-                    aria-current="page"
-                    href="javascript:void(0)"
-                  >
-                    Link
-                  </SideNavMenuItem>
-                  <SideNavMenuItem href="javascript:void(0)">
-                    Link
-                  </SideNavMenuItem>
-                </SideNavMenu>
-                <SideNavLink renderIcon={AlignBoxMiddleCenter32} href="javascript:void(0)" large>
+                <SideNavLink renderIcon={Home32} href="javascript:void(0)" onClick={() => {history.push(`/`);}} large>
+                  Home
+                </SideNavLink>
+                <SideNavLink renderIcon={UserMultiple32} href="javascript:void(0)" onClick={() => {history.push(`/roles`);}} large>
+                  Roles
+                </SideNavLink>
+                <SideNavLink renderIcon={RequestQuote32} href="javascript:void(0)" onClick={() => {history.push(`/forms`);}} large>
+                  Forms
+                </SideNavLink>
+                <SideNavLink renderIcon={Download32} href="javascript:void(0)" onClick={() => {history.push(`/patches`);}} large>
+                  Patches
+                </SideNavLink>
+                <SideNavLink renderIcon={AlignBoxMiddleCenter32} href="javascript:void(0)" onClick={() => {history.push(`/how-tos`);}} large>
                   How-Tos
                 </SideNavLink>
                 <SideNavLink renderIcon={Help32} href="/faq" large>
