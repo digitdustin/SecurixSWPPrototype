@@ -20,22 +20,22 @@ function DigitalClock() {
   const [value, setValue] = React.useState(new Date());
 
   return (
-    <Card sx={{minWidth: 650}}
+    <Card 
       style={{
         display: 'block',
-        width: '70%',
+        width: '40%',
         transitionDuration: '0.3s',
-        height: '100%',
-        marginRight: 15,
+        marginRight: 20,
       }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           Today is
         </Typography>
-        <br />
-        <Card variant="outlined"> <br />
+
+        <Card variant="outlined" style={{height: 310}}> 
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <StaticDatePicker
+
               displayStaticWrapperAs="desktop"
               openTo="day"
               value={value}

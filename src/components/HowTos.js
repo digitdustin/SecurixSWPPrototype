@@ -67,11 +67,23 @@ const HowTos = () => {
         {
             id: 14,
             header: "Refer an employee"
+        },
+        {
+            id: 15,
+            header: "Find announcements"
+        },
+        {
+            id: 16,
+            header: "Submit an IT help ticket"
+        },
+        {
+            id: 17,
+            header: "Request time off"
         }
     ];
 
     const [searchTile, setSearchTile] = useState('')
-    const [currentHowTos, setCurrentHowTos] = useState(tileData.slice(0, 9))
+    const [currentHowTos, setCurrentHowTos] = useState(tileData.slice(0, 6))
 
     return(
         <div className="bx--grid" style={{height: 'calc(100vh - 30px)', paddingTop: 20, paddingBottom: 80, overflow: 'scroll'}}>
@@ -95,7 +107,7 @@ const HowTos = () => {
                             }).map((type, key) => {
                                 return (
                                     <React.Fragment key={key}>
-                                        <Column xlg={4} lg={4} md={4}>
+                                        <Column xs={4} sm={8} md={12} style={{padding:10}}>
                                             <div className="container">
                                                     <h2 className="tile_header">
                                                         <ClickableTile className="tile" target="_blank" rel="noopener noreferer"
@@ -112,15 +124,16 @@ const HowTos = () => {
                     </Grid>
                 </section>
             </div>
-            <Pagination style={{paddingLeft: "300px", paddingTop: "20px", width: "100%"}}
-                page={1}
-                pageSizeInputDisabled
-                pageSize={9}
-                pageSizes = {[9, 18, 27]}
-                totalItems = {14}
-                onChange = {(e) => {setCurrentHowTos(tileData.slice((e.page - 1) * 9, e.page * 9))}}
-            />
-            
+            <div className="bx--offset-lg-3" style={{paddingTop: "20px", width: "75%"}}>
+                <Pagination
+                    page={1}
+                    pageSizeInputDisabled
+                    pageSize={17}
+                    pageSizes = {[6, 12, 18]}
+                    totalItems = {14}
+                    onChange = {(e) => {setCurrentHowTos(tileData.slice((e.page - 1) * 6, e.page * 6))}}
+                />
+            </div>    
         </div>
     );
 }

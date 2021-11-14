@@ -1,13 +1,9 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { ComposedModal, ModalBody, ModalFooter, ModalHeader } from 'carbon-components-react'
 import Task1 from '../assets/img/task1.png'
 import { TaskContext } from '../contexts/task-context';
 
 const tasks = [
-    {
-        number: 0,
-        title: 'Start'
-    },
     {
         number: 1,
         title: 'Contact Support',
@@ -15,8 +11,14 @@ const tasks = [
     },
 ]
 
+const images = [
+    Task1
+]
+
 function TaskModal() {
     const {task, changeTask} = useContext(TaskContext);
+
+    const currTask = Math.ceil(task/2);
 
     return (
         <ComposedModal
@@ -24,18 +26,18 @@ function TaskModal() {
             preventCloseOnClickOutside
         >
             <ModalHeader label="Securix SWP Prototype">
-                <h1>{`Task Number ${task}`}</h1>
+                <h1>{`Task Number ${currTask}`}</h1>
             </ModalHeader>
 
             <ModalBody>
                 <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: '100%'}}>
-                <img src={Task1} width={300} height={300}/>
-                <p style={{marginBottom: '1rem', fontSize: 18}}>{tasks[Math.ceil(task/2)].description}</p>
+                <img src={images[currTask - 1]} width={300} height={300}/>
+                <p style={{marginBottom: '1rem', fontSize: 18}}>{tasks[currTask - 1].description}</p>
                 </div>
             </ModalBody>
 
             <ModalFooter 
-                primaryButtonText={`Start Task ${task}`}
+                primaryButtonText={`Start Task ${currTask}`}
                 onRequestSubmit={ () => changeTask() }
             />
         </ComposedModal>
