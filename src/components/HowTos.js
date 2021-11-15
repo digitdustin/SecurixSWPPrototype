@@ -8,7 +8,9 @@ import {
     Row,
 }from 'carbon-components-react'
 import {Launch20} from '@carbon/icons-react'
+import RenderPDF from "./PDF.js"
 import "../assets/css/HowTos.css"
+import dummypdf from '../assets/dummy.pdf'
 
 const HowTos = () => {
     const tileData = [
@@ -111,7 +113,7 @@ const HowTos = () => {
                                             <div className="container">
                                                     <h2 className="tile__header">
                                                         <ClickableTile className="tile" target="_blank" rel="noopener noreferer"
-                                                         href="https://yt3.ggpht.com/ytc/AKedOLT2y4hkt_FsZMoIkho6Vn8jFfGacOYxi2XkvuXL=s900-c-k-c0x00ffffff-no-rj">
+                                                        href={dummypdf}>  
                                                             {type.header}
                                                             <Launch20 style={{ position: 'absolute', bottom: 10, right: 10}}/>
                                                         </ClickableTile>
@@ -129,9 +131,9 @@ const HowTos = () => {
                 <Pagination
                     page={1}
                     pageSizeInputDisabled
-                    pageSize={17}
+                    pageSize={6}
                     pageSizes = {[6, 12, 18]}
-                    totalItems = {14}
+                    totalItems = {17}
                     onChange = {(e) => {setCurrentHowTos(tileData.slice((e.page - 1) * 6, e.page * 6))}}
                 />
             </div>    
