@@ -8,13 +8,18 @@ import {
   Typography,
   IconButton,
   Collapse,
+  Button,
+  Divider
 } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
     Phone20,
-    Email20
+    Email20,
+    Time20
 } from '@carbon/icons-react';
+import { TaskContext } from '../../contexts/task-context';
+import { HelpContext } from '../../contexts/help-context';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -29,10 +34,20 @@ const ExpandMore = styled((props) => {
 
 function Help() {
   const [expanded, setExpanded] = React.useState(false);
+  const { changeTask } = React.useContext(TaskContext);
+  const { setHelpOpen } = React.useContext(HelpContext);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const handleCall = () => {
+    changeTask(2 * 1);  //Try to complete task 2
+  }
+
+  const openHelp = () => {
+    setHelpOpen(true)
+  }
 
   return (
     <Card sx={{}}>
@@ -64,19 +79,24 @@ function Help() {
             <IconButton aria-label="phone">
               <Phone20 />
             </IconButton>
-            (305) 299-7312
+            <Button onClick={handleCall}>
+              Call the Help Desk
+            </Button>
           </Typography>
           <Typography paragraph>
             <IconButton aria-label="email">
               <Email20 />
             </IconButton>
-            helpdesk@atlas.com
+            <Button onClick={openHelp}>
+              Submit Help Request Form
+            </Button>
           </Typography>
           <Typography>
-            hours:
-          </Typography>
-          <Typography>
-            <pre class="tab4">monday - friday                  8am - 5pm</pre>
+            <pre class="tab4">
+              <IconButton aria-label="hours">
+                <Time20 />
+              </IconButton>
+              monday - friday   |   8am - 5pm</pre>
           </Typography>
         </CardContent>
       </Collapse>
