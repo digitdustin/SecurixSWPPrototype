@@ -5,8 +5,9 @@ import { HelpContext } from "../contexts/help-context";
 
 const HelpModal = () => {
     const {changeTask} = useContext(TaskContext);
-    const {helpOpen, setHelpOpen, submitHelpRequest} = useContext(HelpContext)
+    const {helpOpen, setHelpOpen, submitHelpRequest} = useContext(HelpContext);
     const [username, setUsername] = useState("");
+    const [contact, setContact] = useState("");
     const [category, setCategory] = useState("");
     const [details, setDetails] = useState("");
 
@@ -14,11 +15,14 @@ const HelpModal = () => {
         if(username === "" || category === "" || details === "") {
             alert("Must complete all fields.")
         } else if (username.includes(":") || username.includes("|")) {
-            alert("Username cannot contain the special characters \':\' or \'\|\'.")
+            alert("Username cannot contain the special characters \':\' or \'\|\'.");
+        } else if (contact.includes(":") || contact.includes("|")) {
+            alert("Email cannot contain the special characters \':\' or \'\|\'.");
         } else if (details.includes("|")) {
-            alert("Details cannot contain special character \'|\'.")
+            alert("Details cannot contain special character \'|\'.");
         } else {
-            submitHelpRequest(username, category, details);
+            submitHelpRequest(username, contact, category, details);
+            setHelpOpen(false);
             changeTask(2 * 2);
         }
     }
@@ -36,6 +40,13 @@ const HelpModal = () => {
                 placeholder="Username"
                 value={username}
                 onChange={e => setUsername(e.target.value)}
+            />
+
+            <TextInput
+                labelText="Enter Email"
+                placeholder="Email"
+                value={contact}
+                onChange={e => setContact(e.target.value)}
             />
 
             <Select

@@ -28,19 +28,24 @@ function App() {
     setHelpIsOpen(bool);
   }
 
-  const submitHelpRequest = (username, category, details) => {
-    const newRequests = (req) => [...req, `${username}:${category}:${details}`];
+  const submitHelpRequest = (username, contact, category, details) => {
+    const time = Date.now();
+    const newRequests = (req) => [...req, `${username}:${contact}:${category}:${time}:${details}`];
     localStorage.setItem("requests", newRequests(requests).join("|"));
-    setRequests(req => newRequests(req) );
+    setRequests( req => newRequests(req) );
   }
 
   const getHelpRequests = () => {
-    return requests.map((req) => {
-      let split = req.split(":", 3);
+    console.log(requests);
+    return requests.map((req, ind) => {
+      let split = req.split(":", 5);
       return {
+        id: ind,
         username: split[0],
-        category: split[1],
-        details: split[2]
+        contact: split[1],
+        category: split[2],
+        timestamp: Date(Number(split[3])).toString().slice(0, 24),
+        details: split[4]
       }
     });
   }
