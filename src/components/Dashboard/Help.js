@@ -9,12 +9,14 @@ import {
   IconButton,
   Collapse,
   Button
+  Divider
 } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
     Phone20,
-    Email20
+    Email20,
+    Time20
 } from '@carbon/icons-react';
 import { TaskContext } from '../../contexts/task-context';
 import { HelpContext } from '../../contexts/help-context';
@@ -90,10 +92,11 @@ function Help() {
             </Button>
           </Typography>
           <Typography>
-            hours:
-          </Typography>
-          <Typography>
-            <pre class="tab4">monday - friday                  8am - 5pm</pre>
+            <pre class="tab4">
+              <IconButton aria-label="hours">
+                <Time20 />
+              </IconButton>
+              monday - friday   |   8am - 5pm</pre>
           </Typography>
         </CardContent>
       </Collapse>
