@@ -1,110 +1,136 @@
 import MainScreen from "./MainScreen.js";
 import '../assets/css/Patches.css';
+import React, { useContext, useEffect, useState } from "react";
+import { 
+  Button, 
+  ContentSwitcher, 
+  Switch,
+  Pagination,
+  Search,
+  ClickableTile,
+  Column,
+  Grid,
+  Row,
+  Modal
+} from "carbon-components-react";
+import FormHolder from "./FormHolder.js";
+import {RoleContext, roles} from '../contexts/role-context'
+import { patches } from './PatchesData'
+import PatchesHolder from "./PatchesHolder.js";
+import { Download20 } from "@carbon/icons-react";
+
+
 
 const Patches = () => {
+  const [view, setView] = useState('appview')
+  const [open, setOpen] = useState(false)
+  const [selectedName, setSelectedName] = useState('')
+  const [selectedCompany, setSelectedCompany] = useState('')
+  const [searchTile, setSearchTile] = useState('')
+  const [currentPatches, setCurrentPatches] = useState(patches.slice(0, 6))
+
+  var arr = []
+  let i = 0
+  for (let patch of patches) {
+      for (let v of patch.versions) {
+          arr.push({
+              name: patch.name,
+              company: patch.company,
+              patch: v.download,
+              version: v.version,
+              download: <Download20 />,
+              id: i
+          })
+          i++
+      }
+  }
+
   return (
-    <MainScreen title="PATCHES">
-      <div class="container flex justify-center mx-auto">
-        <div class="flex flex-col">
-            <div class="w-full">
-                <div class="border-b border-gray-200 shadow">
-                    <table class="divide-y divide-gray-300 ">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-6 py-2 text-xs text-gray-500">
-                                  ID
-                                </th>
-                                <th class="px-6 py-2 text-xs text-gray-500">
-                                    Patch Name
-                                </th>
-                                <th class="px-6 py-2 text-xs text-gray-500">
-                                    Software
-                                </th>
-                                <th class="px-6 py-2 text-xs text-gray-500">
-                                    Created_at
-                                </th>
-                                <th class="px-6 py-2 text-xs text-gray-500">
-                                    Download
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-300">
-                            <tr class="whitespace-nowrap">
-                                <td class="px-6 py-4 text-sm text-gray-500">
-                                    1
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-900">
-                                        Patch 1
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500">Microsoft Word</div>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-gray-500">
-                                    2021-1-12
-                                </td>
-                                <td class="px-6 py-4">
-                                    <a href="#">
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                                      </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="whitespace-nowrap">
-                                <td class="px-6 py-4 text-sm text-gray-500">
-                                    2
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-900">
-                                        Patch 2
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500">Visual Studio</div>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-gray-500">
-                                    2021-1-12
-                                </td>
-                                <td class="px-6 py-4">
-                                    <a href="#">
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                                      </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="whitespace-nowrap">
-                                <td class="px-6 py-4 text-sm text-gray-500">
-                                    3
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-900">
-                                        Patch 3
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500">Zoom</div>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-gray-500">
-                                    2021-1-12
-                                </td>
-                                <td class="px-6 py-4">
-                                    <a href="#">
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                                      </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+    <div className="bx--grid" style={{height: 'calc(100vh - 30px)', paddingTop: 50, paddingBottom: 80, overflow: 'hidden'}}>
+            <div className="bx--row ">
+              <div className="bx--offset-lg-2 bx--col-lg-10">
+                <h1 style={{marginBottom: 10}}>
+                  Patches
+                </h1>
+                <p style={{marginBottom: 20}}>Download the latest patches for approved software.</p>
+                <div style={{backgroundColor: 'white', padding : 20, marginBottom: 20}}>
+                  
+                  <ContentSwitcher light style={{marginBottom: 20}} onChange={(option) => {setView(option.name)}}>
+                    <Switch name="appview" text="App View"></Switch>
+                    <Switch name="listview" text="List View"></Switch>
+                  </ContentSwitcher>
+                  {view == 'listview' ? 
+                  <PatchesHolder rows={arr} />
+                  :
+                  <>
+                    <Search 
+                        placeholder="Search" 
+                        onChange={e => {setSearchTile(e.target.value)}}
+                    />
+                    <Grid style={{marginBottom: 20}}>
+                        <Row>
+                    
+                            {currentPatches.slice({currentPatches}).filter((val) => {
+                                if(searchTile == "" || searchTile == null) {
+                                    return val
+                                } else if (val.name.toLowerCase().includes(searchTile.toLowerCase()) || val.company.toLowerCase().includes(searchTile.toLowerCase())){
+                                    return val
+                                } 
+                            }).map((type, key) => {
+                                return (
+                                        <Column>
+                                            <div className="container" style={{}}>
+                                                        <ClickableTile 
+                                                          className="tile" 
+                                                          size='lg' 
+                                                          style={{
+                                                            backgroundColor: '#f4f4f4', 
+                                                            display: 'flex', 
+                                                            alignItems: 'center', 
+                                                            justifyContent: 'center', 
+                                                            paddingTop: 30, 
+                                                            paddingBottom: 30
+                                                          }} 
+                                                          onClick={() => {
+                                                            setSelectedCompany(type.company)
+                                                            setSelectedName(type.name)
+                                                            setOpen(true)
+                                                          }}
+                                                          target="_blank">
+                                                           <img src={type.logo} height={80} width={80} style={{marginBottom: 20, marginTop: 10}} />
+                                                            <h4>{type.name} ({type.versions.length})</h4>
+                                                            {type.company}
+                                                        </ClickableTile>
+                                            </div>                               
+                                        </Column>
+                                )
+                            })}
+                        </Row>
+                    </Grid>
+                    <Pagination
+                        page={1}
+                        pageSizeInputDisabled
+                        pageSize={17}
+                        pageSizes = {[6, 12, 18]}
+                        totalItems = {14}
+                        onChange = {(e) => {setCurrentPatches(patches.slice((e.page - 1) * 6, e.page * 6))}}
+                    />
+                  </>
+                  }
+                  <Modal 
+                    passiveModal 
+                    open={open} 
+                    onRequestClose={() => setOpen(false)}
+                    modalLabel={selectedCompany}
+                    modalHeading={selectedName + ' Patches'}
+                  >
+                    {console.log("TEST IS " + selectedName)}
+                    <PatchesHolder rows={arr.filter(item => item.name === selectedName)} />
+                  </Modal>
                 </div>
             </div>
         </div>
-      </div>
-    </MainScreen>
+    </div>
   );
 }
 
