@@ -9,9 +9,39 @@ const tasks = [
         title: 'Contact Support',
         description: 'Uh Oh! You tried to submit a form to obtain local administrator rights but it seems your access is restricted. Locate the help desk phone number and call it to complete this task.'
     },
+    {
+        number: 2,
+        title: 'Submit Help Request',
+        description: ''
+    },
+    {
+        number: 3,
+        title:'View Help Request Forms',
+        description: ''
+    },
+    {
+        number: 4,
+        title:'Find and Download a Patch for Adobe Acrobat',
+        description: ''
+    },
+    {
+        number: 5,
+        title:'Upload a new Patch',
+        description: ''
+    },
+    {
+        number: 6,
+        title:'Find a How-To Describing Adding a New User',
+        description: ''
+    }
 ]
 
 const images = [
+    Task1,
+    Task1,
+    Task1,
+    Task1,
+    Task1,
     Task1
 ]
 

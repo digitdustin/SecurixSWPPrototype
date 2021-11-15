@@ -13,11 +13,36 @@ import BasePage from './components/BasePage';
 import {RoleContext, roles} from './contexts/role-context'
 import TaskModal from './components/TaskModal';
 import { TaskContext } from './contexts/task-context';
+import HelpModal from './components/HelpModal';
+import { HelpContext } from './contexts/help-context';
 
 function App() {
   const [role, setRole] = useState( localStorage.getItem("role") ? Number(localStorage.getItem("role")) : roles.admin );
   const [task, setTask] = useState( localStorage.getItem("currentTask") ? Number(localStorage.getItem("currentTask")) : 1);
-  const [times, setTimes] = useState([]);
+  const [times, setTimes] = useState(localStorage.getItem("times") ? localStorage.getItem("times").split(",") : []);
+  const [helpOpen, setHelpIsOpen] = useState(false);
+  const [requests, setRequests] = useState(localStorage.getItem("requests") ? localStorage.getItem("requests").split("|") : []);
+
+  const setHelpOpen = (bool) => {
+    setHelpIsOpen(bool);
+  }
+
+  const submitHelpRequest = (username, category, details) => {
+    const newRequests = (req) => [...req, `${username}:${category}:${details}`];
+    localStorage.setItem("requests", newRequests(requests).join("|"));
+    setRequests(req => newRequests(req) );
+  }
+
+  const getHelpRequests = () => {
+    return requests.map((req) => {
+      let split = req.split(":", 3);
+      return {
+        username: split[0],
+        category: split[1],
+        details: split[2]
+      }
+    });
+  }
 
   const toggleRole = () => {
     let newRole = (role) => role === roles.user ? roles.admin : roles.user;
@@ -29,7 +54,7 @@ function App() {
     if(task === num || num === -1) {
       localStorage.setItem("currentTask", task+1);
       setTask(task + 1);
-      localStorage.setItem("times", [...times, Date.now()]);
+      localStorage.setItem("times", [...times, Date.now()].toString());
       setTimes([...times, Date.now()]);
     }
   }
@@ -37,7 +62,9 @@ function App() {
   return(
     <RoleContext.Provider value={{role, toggleRole}}>
       <TaskContext.Provider value={{task, changeTask}}>
-        <Content />
+        <HelpContext.Provider value={{helpOpen, setHelpOpen, submitHelpRequest, getHelpRequests}}>
+          <Content />
+        </HelpContext.Provider>
       </TaskContext.Provider>
     </RoleContext.Provider>
   )
@@ -49,6 +76,7 @@ function Content() {
     <BrowserRouter>
         <TopNav />
         <TaskModal />
+        <HelpModal />
 
         <main>
           <Route path='/' component={Dashboard} exact/>
