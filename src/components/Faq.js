@@ -67,10 +67,11 @@ const Faq = () => {
     <div class="faq">
       <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900" id="dashboard">FAQ</h1>
+          <h1 className="text-3xl font-bold text-gray-900" id="dashboard" style={{marginBottom: 10}}>FAQ</h1>
+          <p style={{marginBottom: 20}}>Get the answers to frequently asked questions.</p>
         </div>
       </header>
-      <main style={{paddingTop: "5%", paddingBottom: "6%", paddingRight: '5%'}}>
+      <main style={{paddingBottom: "6%", paddingRight: '5%'}}>
       <Tile style={{backgroundColor: white}}>
         <div class="bx--grid">
           <div class="bx--row" style={{paddingTop: '5%', paddingBottom: '5%'}}>
