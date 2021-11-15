@@ -11,12 +11,13 @@
     min-height: 10.5rem;
     width: 20rem;
     text-align: center;
-    vertical-align: middle;
+    padding-top: 60px;
     flex-direction: column;
+    font-size: large;
 }
 
 .tile__header{
-    font-size: 14pt;
+    font-size:large;
     font-weight: 600;
     word-wrap: break-word;
 }

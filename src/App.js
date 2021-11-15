@@ -8,6 +8,7 @@ import Header from './components/Header.js';
 import Patches from './components/Patches.js';
 import HowTos from './components/HowTos.js';
 import TopNav from './components/TopNav';
+import Faq from './components/Faq';
 import VerticalNav from './components/VerticalNav';
 import './app.scss';
 import BasePage from './components/BasePage';
@@ -55,6 +56,7 @@ function Content() {
           <Route path='/forms' component={Forms} exact/>
           <Route path='/patches' component={Patches} exact/>
           <Route path='/how-tos' component={HowTos} exact/>
+          <Route path='/faq' component={Faq} exact/>
         </main>
     </BrowserRouter>
     </div>

@@ -3,16 +3,16 @@ import styled from 'styled-components'
 import SearchBar from './SearchBar'
 import AProfilePicture from '../assets/img/AProfilePicture.png'
 import { useHistory } from 'react-router-dom'
-import { 
-    Header, 
-    HeaderName, 
-    HeaderGlobalBar, 
-    HeaderGlobalAction, 
+import {
+    Header,
+    HeaderName,
+    HeaderGlobalBar,
+    HeaderGlobalAction,
     HeaderMenuButton,
     SkipToContent,
-    SideNav, 
-    SideNavItems, 
-    SideNavMenu, 
+    SideNav,
+    SideNavItems,
+    SideNavMenu,
     SideNavMenuItem,
     SideNavLink,
     SideNavIcon,
@@ -20,10 +20,10 @@ import {
     Search,
     Button
 } from 'carbon-components-react'
-import { 
-    Bookmark20, 
-    Help20, 
-    UserAvatar20, 
+import {
+    Bookmark20,
+    Help20,
+    UserAvatar20,
     Notification20,
     Home32,
     UserMultiple32,
@@ -88,7 +88,7 @@ function TopNav() {
                 <SideNavLink renderIcon={AlignBoxMiddleCenter32} href="javascript:void(0)" onClick={() => {history.push(`/how-tos`);}} large>
                   How-Tos
                 </SideNavLink>
-                <SideNavLink renderIcon={Help32} href="javascript:void(0)" onClick={() => {history.push(`/FAQ`);}} large>
+                <SideNavLink renderIcon={Help32} href="/faq" large>
                   FAQ
                 </SideNavLink>
               </SideNavItems>
