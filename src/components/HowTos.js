@@ -5,9 +5,9 @@ import {
     ClickableTile,
     Column,
     Grid,
-    Row
+    Row,
 }from 'carbon-components-react'
-
+import {Launch20} from '@carbon/icons-react'
 import "../assets/css/HowTos.css"
 
 const HowTos = () => {
@@ -109,10 +109,11 @@ const HowTos = () => {
                                     <React.Fragment key={key}>
                                         <Column xs={4} sm={8} md={12} style={{padding:10}}>
                                             <div className="container">
-                                                    <h2 className="tile_header">
+                                                    <h2 className="tile__header">
                                                         <ClickableTile className="tile" target="_blank" rel="noopener noreferer"
                                                          href="https://yt3.ggpht.com/ytc/AKedOLT2y4hkt_FsZMoIkho6Vn8jFfGacOYxi2XkvuXL=s900-c-k-c0x00ffffff-no-rj">
                                                             {type.header}
+                                                            <Launch20 style={{ position: 'absolute', bottom: 10, right: 10}}/>
                                                         </ClickableTile>
                                                     </h2>  
                                             </div>                               

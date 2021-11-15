@@ -16,7 +16,7 @@ import {
     Script20,
     DocumentUnknown20,
     UserAvatar20,
-    Notification20
+    Help20
 } from '@carbon/icons-react';
 
 function Quicklinks() {
@@ -30,7 +30,7 @@ function Quicklinks() {
           </Stack>
           <Stack direction="row" spacing={1}>
             <Chip icon={<UserAvatar20 />} label="Profile" component="a" href='/' clickable/>
-            <Chip icon={<Notification20 />} label="Notifications" variant="outlined" component="a" href='/forms' clickable/>
+            <Chip icon={<Help20 />} label="FAQ" variant="outlined" component="a" href='/faq' clickable/>
           </Stack>
         </Stack>
       </Tile>
