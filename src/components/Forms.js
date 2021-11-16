@@ -5,6 +5,7 @@ import { Button, ContentSwitcher, Switch } from "carbon-components-react";
 import FormHolder from "./FormHolder.js";
 import {RoleContext, roles} from '../contexts/role-context'
 import {HelpContext} from '../contexts/help-context'
+import {TaskContext} from '../contexts/task-context'
 
 const helpRequestHeaders = [
   {
@@ -28,8 +29,15 @@ const helpRequestHeaders = [
 const Forms = () => {
   const {role, toggleRole} = useContext(RoleContext);
   const {getHelpRequests} = useContext(HelpContext);
+  const {changeTask} = useContext(TaskContext);
 
   const [formPage, setFormPage] = useState('allforms');
+
+  const handleChange = (e) => {
+    if(e.name !== 'allforms')
+      changeTask(2 * 3);
+    setFormPage(e.name);
+  }
 
   return (
     <div className="bx--grid" style={{height: 'calc(100vh - 30px)', paddingTop: 50, paddingBottom: 80, overflow: 'scroll'}}>
@@ -41,7 +49,7 @@ const Forms = () => {
                 <p style={{marginBottom: 20}}>View, fill out, and download all Atlas forms.</p>
                 <div style={{backgroundColor: 'white', padding : 20, marginBottom: 20}}>
                   {role === roles.admin ? 
-                  <ContentSwitcher light style={{marginBottom: 20}} onChange={(e) => {setFormPage(e.name)}}>
+                  <ContentSwitcher light style={{marginBottom: 20}} onChange={handleChange}>
                     <Switch name="allforms" text="All Forms (24)"></Switch>
                     <Switch name="action" text="Awaiting Action"></Switch>
                   </ContentSwitcher>

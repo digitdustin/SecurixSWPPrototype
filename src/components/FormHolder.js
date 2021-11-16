@@ -26,6 +26,7 @@ import {
     View20
 } from '@carbon/icons-react';
 import { HelpContext } from '../contexts/help-context';
+import { RoleContext, roles } from '../contexts/role-context';
 
 const formHeaders = [
     {
@@ -228,10 +229,19 @@ function FormHolder(props) {
     const [currentForms, setCurrentForms] = useState(props.rows.slice(0, 8))
     
     const {setHelpOpen} = useContext(HelpContext);
+    const {role} = useContext(RoleContext);
 
     useEffect(() => {
         setCurrentForms(props.rows.slice(0, 8))
     }, [props.rows]);
+
+    const handleClick = () => {
+        if(role === roles.admin) {
+            alert("Switch to user mode to submit a help request.")
+        } else {
+            setHelpOpen(true);
+        }
+    }
 
     return (
         <div style={{width: '100%'}}>
@@ -283,7 +293,7 @@ function FormHolder(props) {
                         Action 3
                       </TableToolbarAction>
                     </TableToolbarMenu>
-                    <Button onClick={() => setHelpOpen(true)}>New Form Request</Button>
+                    {role === roles.user && <Button onClick={() => setHelpOpen(true)}>New Form Request</Button>}
                   </TableToolbarContent>
                 </TableToolbar>
                 <Table {...getTableProps()}>
@@ -300,7 +310,7 @@ function FormHolder(props) {
                 <TableBody>
                     {rows.map((row) => (
                     row.id === 3 ?
-                    <TableRow {...getRowProps({ row })} onClick={() => setHelpOpen(true)} style={{cursor:'pointer'}}>
+                    <TableRow {...getRowProps({ row })} onClick={handleClick} style={{cursor:'pointer'}}>
                         <TableSelectRow {...getSelectionProps({ row })} />
                         {row.cells.map((cell) => (
                         <TableCell key={cell.id}>{cell.value}</TableCell>

@@ -62,6 +62,14 @@ function PatchesHolder(props) {
         setCurrentPatches(props.rows.slice(0,8))
     }, [props.rows])
 
+    const handleAddPatch = () => {
+        if(props.rows.filter((item) => item.name === "Google Chrome").length > 0) {
+            changeTask(2 * 5);
+        }
+        if(props.setOpen)
+            props.setOpen(false);
+    }
+
     return (
         <div style={{width: '100%'}}>
         <DataTable rows={currentPatches} headers={headers}>
@@ -112,7 +120,7 @@ function PatchesHolder(props) {
                         Action 3
                       </TableToolbarAction>
                     </TableToolbarMenu>
-                    {role === roles.admin && <Button onClick={() => changeTask(2 * 5)}>Add New Patch</Button>}
+                    {role === roles.admin && <Button onClick={handleAddPatch}>Add New Patch</Button>}
                   </TableToolbarContent>
                 </TableToolbar>
                 <Table {...getTableProps()}>

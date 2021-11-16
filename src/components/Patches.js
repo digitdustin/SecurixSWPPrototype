@@ -138,7 +138,7 @@ const Patches = () => {
                     modalHeading={selectedName + ' Patches'}
                   >
                     {console.log("TEST IS " + selectedName)}
-                    <PatchesHolder rows={arr.filter(item => item.name === selectedName)} />
+                    <PatchesHolder rows={arr.filter(item => item.name === selectedName)} setOpen={setOpen}/>
                   </Modal>
                 </div>
             </div>
