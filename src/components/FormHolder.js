@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { 
     Pagination, 
     DataTable,
@@ -26,7 +26,7 @@ import {
     View20
 } from '@carbon/icons-react';
 
-const headers = [
+const formHeaders = [
     {
         key: 'name',
         header: 'Name'
@@ -45,7 +45,7 @@ const headers = [
     },
 ]
 
-const rows = [
+const formRows = [
     {
         id: 1,
         name: 'Export Control Form',
@@ -65,7 +65,7 @@ const rows = [
         name: 'Help Request Form',
         filesize: '20 KB',
         submittedby: 'Dustin Karp',
-        status: 'Active'
+        status: 'Active',
     },
     {
         id: 4,
@@ -223,12 +223,16 @@ const rows = [
     },
 ]
 
-function FormHolder() {
-    const [currentForms, setCurrentForms] = useState(rows.slice(0, 8))
+function FormHolder(props) {
+    const [currentForms, setCurrentForms] = useState(props.rows.slice(0, 8))
+
+    useEffect(() => {
+        setCurrentForms(props.rows.slice(0, 8))
+    }, [props.rows])
 
     return (
         <div style={{width: '100%'}}>
-        <DataTable rows={currentForms} headers={headers}>
+        <DataTable rows={currentForms} headers={props.headers}>
             {({ 
                 rows, 
                 headers, 
@@ -292,12 +296,21 @@ function FormHolder() {
                 </TableHead>
                 <TableBody>
                     {rows.map((row) => (
+                    row.id == 3 ? 
+                    <TableRow {...getRowProps({ row })} style={{cursor: 'pointer'}} onClick={() => {console.log('test')}}>
+                        <TableSelectRow {...getSelectionProps({ row })} />
+                        {row.cells.map((cell) => (
+                        <TableCell key={cell.id}>{cell.value}</TableCell>
+                        ))}
+                    </TableRow>
+                    :
                     <TableRow {...getRowProps({ row })}>
                         <TableSelectRow {...getSelectionProps({ row })} />
                         {row.cells.map((cell) => (
                         <TableCell key={cell.id}>{cell.value}</TableCell>
                         ))}
                     </TableRow>
+                    
                     ))}
                 </TableBody>
                 </Table>
@@ -307,12 +320,17 @@ function FormHolder() {
         <Pagination 
             pageSizes={[8, 16, 24]} 
             pageSizeInputDisabled 
-            totalItems={24}
+            totalItems={props.rows.length}
             pageInputDisabled
-            onChange={(e) => {setCurrentForms(rows.slice((e.page - 1) * 8, e.page * 8))}}
+            onChange={(e) => {setCurrentForms(props.rows.slice((e.page - 1) * 8, e.page * 8))}}
         />
         </div>
     )
+}
+
+FormHolder.defaultProps = {
+    headers: formHeaders,
+    rows: formRows
 }
 
 export default FormHolder
