@@ -1,13 +1,18 @@
 import React, { useContext } from 'react'
 import { ComposedModal, ModalBody, ModalFooter, ModalHeader } from 'carbon-components-react'
-import Task1 from '../assets/img/task1.png'
+import Task1 from '../assets/img/Task1.png'
+import Task2 from '../assets/img/Task2.png'
+import Task3 from '../assets/img/Task3.png'
+import Task4 from '../assets/img/Task4.png'
+import Task5 from '../assets/img/Task5.png'
+import Task6 from '../assets/img/Task6.png'
 import { TaskContext } from '../contexts/task-context';
 
 const tasks = [
     {
         number: 1,
         title: 'Contact Support',
-        description: 'Uh Oh! It\'s your first day on the job and you tried to submit a form to obtain local administrator rights but it seems your access is restricted. Locate the help desk phone number and call it to complete this task.'
+        description: 'Uh Oh! You tried to submit a form to obtain local administrator rights but it seems your access is restricted. Locate the help desk phone number and call it to complete this task.'
     },
     {
         number: 2,
@@ -32,17 +37,17 @@ const tasks = [
     {
         number: 6,
         title:'Find a How-To Describing Adding a New User',
-        description: ''
+        description: 'It\'s Byron\'s first day on the job. Find the guide on how to add a new user.'
     }
 ]
 
 const images = [
     Task1,
-    Task1,
-    Task1,
-    Task1,
-    Task1,
-    Task1
+    Task2,
+    Task3,
+    Task4,
+    Task5,
+    Task6
 ]
 
 function TaskModal() {

@@ -10,7 +10,7 @@ import {
 import {Launch20} from '@carbon/icons-react'
 import RenderPDF from "./PDF.js"
 import "../assets/css/HowTos.css"
-import dummypdf from '../assets/dummy.pdf'
+import CongratulationsPDF from '../assets/Congratulations.pdf'
 
 const HowTos = () => {
     const tileData = [
@@ -126,7 +126,7 @@ const HowTos = () => {
                                                                 paddingBottom: 30,
                                                                 margin: 20
                                                               }}
-                                                        href={dummypdf}>
+                                                        href={CongratulationsPDF}>
                                                             {type.header}
                                                             <Launch20 style={{ position: 'absolute', bottom: 10, right: 10}}/>
                                                         </ClickableTile>
