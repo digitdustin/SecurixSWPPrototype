@@ -5,6 +5,7 @@ import { Button, ContentSwitcher, Switch } from "carbon-components-react";
 import FormHolder from "./FormHolder.js";
 import {RoleContext, roles} from '../contexts/role-context'
 import {HelpContext} from '../contexts/help-context'
+import {TaskContext} from '../contexts/task-context'
 
 const helpRequestHeaders = [
   {
@@ -26,7 +27,7 @@ const helpRequestHeaders = [
 ]
 
 const Forms = () => {
-  const {role, toggleRole} = useContext(RoleContext);
+  const {role} = useContext(RoleContext);
   const {getHelpRequests} = useContext(HelpContext);
 
   const [formPage, setFormPage] = useState('allforms');
@@ -41,7 +42,7 @@ const Forms = () => {
                 <p style={{marginBottom: 20}}>View, fill out, and download all Atlas forms.</p>
                 <div style={{backgroundColor: 'white', padding : 20, marginBottom: 20}}>
                   {role === roles.admin ? 
-                  <ContentSwitcher light style={{marginBottom: 20}} onChange={(e) => {setFormPage(e.name)}}>
+                  <ContentSwitcher light style={{marginBottom: 20}} onChange={(e) => setFormPage(e.name)}>
                     <Switch name="allforms" text="All Forms (24)"></Switch>
                     <Switch name="action" text="Awaiting Action"></Switch>
                   </ContentSwitcher>

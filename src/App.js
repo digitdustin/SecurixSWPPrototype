@@ -28,8 +28,7 @@ function App() {
     setHelpIsOpen(bool);
   }
 
-  const submitHelpRequest = (username, contact, category, details) => {
-    const time = Date.now();
+  const submitHelpRequest = (username, contact, category, time, details) => {
     const newRequests = (req) => [...req, `${username}:${contact}:${category}:${time}:${details}`];
     localStorage.setItem("requests", newRequests(requests).join("|"));
     setRequests( req => newRequests(req) );
@@ -44,7 +43,7 @@ function App() {
         username: split[0],
         contact: split[1],
         category: split[2],
-        timestamp: Date(Number(split[3])).toString().slice(0, 24),
+        timestamp: new Date(Number(split[3])).toString().slice(0, 24),
         details: split[4]
       }
     });

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { 
     Pagination, 
     DataTable,
@@ -25,6 +25,9 @@ import {
     Bookmark20,
     View20
 } from '@carbon/icons-react';
+import { HelpContext } from '../contexts/help-context';
+import { RoleContext, roles } from '../contexts/role-context';
+import { TaskContext } from '../contexts/task-context';
 
 const formHeaders = [
     {
@@ -215,7 +218,7 @@ const formRows = [
         status: 'Inctive'
     },
     {
-        id: 16,
+        id: 25,
         name: 'Job Referral Application',
         filesize: '3 MB',
         submittedby: 'ADMIN',
@@ -225,10 +228,27 @@ const formRows = [
 
 function FormHolder(props) {
     const [currentForms, setCurrentForms] = useState(props.rows.slice(0, 8))
+    
+    const {setHelpOpen} = useContext(HelpContext);
+    const {role} = useContext(RoleContext);
+    const {changeTask} = useContext(TaskContext);
 
     useEffect(() => {
         setCurrentForms(props.rows.slice(0, 8))
-    }, [props.rows])
+    }, [props.rows]);
+
+    const handleClick = () => {
+        if(role === roles.admin) {
+            alert("Switch to user mode to submit a help request.")
+        } else {
+            setHelpOpen(true);
+        }
+    }
+
+    const handleView = () => {
+        if(role === roles.admin)
+            changeTask(2 * 3);
+    }
 
     return (
         <div style={{width: '100%'}}>
@@ -250,7 +270,7 @@ function FormHolder(props) {
                     <TableBatchAction
                     tabIndex={getBatchActionProps().shouldShowBatchActions ? 0 : -1}
                     renderIcon={View20}
-                    onClick={console.log(selectedRows)}>
+                    onClick={handleView}>
                     View
                     </TableBatchAction>
                     <TableBatchAction
@@ -280,7 +300,7 @@ function FormHolder(props) {
                         Action 3
                       </TableToolbarAction>
                     </TableToolbarMenu>
-                    <Button onClick={console.log('Button click')}>New Form Request</Button>
+                    {role === roles.user && <Button onClick={() => setHelpOpen(true)}>New Form Request</Button>}
                   </TableToolbarContent>
                 </TableToolbar>
                 <Table {...getTableProps()}>
@@ -296,8 +316,8 @@ function FormHolder(props) {
                 </TableHead>
                 <TableBody>
                     {rows.map((row) => (
-                    row.id == 3 ? 
-                    <TableRow {...getRowProps({ row })} style={{cursor: 'pointer'}} onClick={() => {console.log('test')}}>
+                    row.id === 3 ?
+                    <TableRow {...getRowProps({ row })} onClick={handleClick} style={{cursor:'pointer'}}>
                         <TableSelectRow {...getSelectionProps({ row })} />
                         {row.cells.map((cell) => (
                         <TableCell key={cell.id}>{cell.value}</TableCell>
