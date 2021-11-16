@@ -66,7 +66,7 @@ const formRows = [
         name: 'Help Request Form',
         filesize: '20 KB',
         submittedby: 'Dustin Karp',
-        status: 'Active'
+        status: 'Active',
     },
     {
         id: 4,
@@ -313,6 +313,7 @@ function FormHolder(props) {
                         <TableCell key={cell.id}>{cell.value}</TableCell>
                         ))}
                     </TableRow>
+                    
                     ))}
                 </TableBody>
                 </Table>

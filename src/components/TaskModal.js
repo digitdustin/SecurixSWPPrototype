@@ -7,27 +7,27 @@ const tasks = [
     {
         number: 1,
         title: 'Contact Support',
-        description: 'Uh Oh! You tried to submit a form to obtain local administrator rights but it seems your access is restricted. Locate the help desk phone number and call it to complete this task.'
+        description: 'Uh Oh! It\'s your first day on the job and you tried to submit a form to obtain local administrator rights but it seems your access is restricted. Locate the help desk phone number and call it to complete this task.'
     },
     {
         number: 2,
         title: 'Submit Help Request',
-        description: ''
+        description: 'Aw shucks! The help desk did not answer your call. As a user, find and submit a "Help Request Form" to the help desk. '
     },
     {
         number: 3,
         title:'View Help Request Forms',
-        description: ''
+        description: 'Your help request has been sent to an administrator. Switch to admin view and resolve the help form.'
     },
     {
         number: 4,
         title:'Find and Download a Patch for Adobe Acrobat',
-        description: ''
+        description: 'A new version of version of Adobe Acrobat has come out. Yours is now susceptible to viruses. Find and download the latest Adobe Acrobat patch.'
     },
     {
         number: 5,
-        title:'Upload a new Patch',
-        description: ''
+        title:'Upload a new Google Chrome Patch',
+        description: 'The company\'s version of Google Chrome is out of date. Upload the new version of Google Chrome.'
     },
     {
         number: 6,

@@ -43,7 +43,7 @@ const Forms = () => {
                   {role === roles.admin ? 
                   <ContentSwitcher light style={{marginBottom: 20}} onChange={(e) => {setFormPage(e.name)}}>
                     <Switch name="allforms" text="All Forms (24)"></Switch>
-                    <Switch name="action" text="Awaiting Action (1)"></Switch>
+                    <Switch name="action" text="Awaiting Action"></Switch>
                   </ContentSwitcher>
                   : <h4 style={{marginBottom: 20}}>All Forms (24)</h4>}
                   {formPage === 'allforms' ? <FormHolder /> : <FormHolder headers={helpRequestHeaders} rows={getHelpRequests()}/>}

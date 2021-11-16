@@ -88,11 +88,12 @@ const HowTos = () => {
     const [currentHowTos, setCurrentHowTos] = useState(tileData.slice(0, 6))
 
     return(
-        <div className="bx--grid" style={{height: 'calc(100vh - 30px)', paddingTop: 20, paddingBottom: 80, overflow: 'scroll'}}>
+        <div className="bx--grid" style={{height: 'calc(100vh - 30px)', paddingTop: 50, paddingBottom: 80, overflow: 'hidden'}}>
              <div className="bx--row">
-                <section className="bx--offset-lg-3 bx--col-lg-13">
+                <section className="bx--offset-lg-2 bx--col-lg-10">
                     <h1 style={{marginBottom: 10}}>How-Tos</h1>
                     <p style={{marginBottom: 20}}>Click on a How-To to open it in a new tab.</p>
+                    <div style={{backgroundColor: 'white', padding : 20, marginBottom: 20}}>
                     <Search 
                         placeholder="Search" 
                         onChange={e => {setSearchTile(e.target.value)}}
@@ -112,7 +113,19 @@ const HowTos = () => {
                                         <Column xs={4} sm={8} md={12} style={{padding:10}}>
                                             <div className="container">
                                                     <h2 className="tile__header">
-                                                        <ClickableTile className="tile" target="_blank" rel="noopener noreferer"
+                                                        <ClickableTile 
+                                                            className="tile" 
+                                                            target="_blank" 
+                                                            rel="noopener noreferer"
+                                                            style={{
+                                                                backgroundColor: '#f4f4f4', 
+                                                                display: 'flex', 
+                                                                alignItems: 'center', 
+                                                                justifyContent: 'center', 
+                                                                paddingTop: 30, 
+                                                                paddingBottom: 30,
+                                                                margin: 20
+                                                              }} 
                                                         href={dummypdf}>  
                                                             {type.header}
                                                             <Launch20 style={{ position: 'absolute', bottom: 10, right: 10}}/>
@@ -125,9 +138,6 @@ const HowTos = () => {
                             })}
                         </Row>
                     </Grid>
-                </section>
-            </div>
-            <div className="bx--offset-lg-3" style={{paddingTop: "20px", width: "75%"}}>
                 <Pagination
                     page={1}
                     pageSizeInputDisabled
@@ -136,6 +146,10 @@ const HowTos = () => {
                     totalItems = {17}
                     onChange = {(e) => {setCurrentHowTos(tileData.slice((e.page - 1) * 6, e.page * 6))}}
                 />
+                    </div>
+                </section>
+            </div>
+            <div className="bx--offset-lg-3" style={{paddingTop: "20px", width: "75%"}}>
             </div>    
         </div>
     );
