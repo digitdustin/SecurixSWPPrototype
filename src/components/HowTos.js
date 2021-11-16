@@ -91,32 +91,31 @@ const HowTos = () => {
                 <section className="bx--offset-lg-3 bx--col-lg-13">
                     <h1 style={{marginBottom: 10}}>How-Tos</h1>
                     <p style={{marginBottom: 20}}>Click on a How-To to open it in a new tab.</p>
-                    <Search 
-                        placeholder="Search" 
+                    <Search
+                        placeholder="Search"
                         onChange={e => {setSearchTile(e.target.value)}}
                     />
                     <Grid>
                         <Row>
-                    
+
                             {currentHowTos.slice({currentHowTos}).filter((val) => {
                                 if(searchTile == "" || searchTile == null) {
                                     return val
                                 } else if (val.header.toLowerCase().includes(searchTile.toLowerCase())){
                                     return val
-                                } 
+                                }
                             }).map((type, key) => {
                                 return (
                                     <React.Fragment key={key}>
                                         <Column xs={4} sm={8} md={12} style={{padding:10}}>
                                             <div className="container">
                                                     <h2 className="tile__header">
-                                                        <ClickableTile className="tile" target="_blank" rel="noopener noreferer"
-                                                         href="https://yt3.ggpht.com/ytc/AKedOLT2y4hkt_FsZMoIkho6Vn8jFfGacOYxi2XkvuXL=s900-c-k-c0x00ffffff-no-rj">
+                                                        <ClickableTile className="tile" target="_blank" rel="noopener noreferer">
                                                             {type.header}
                                                             <Launch20 style={{ position: 'absolute', bottom: 10, right: 10}}/>
                                                         </ClickableTile>
-                                                    </h2>  
-                                            </div>                               
+                                                    </h2>
+                                            </div>
                                         </Column>
                                     </React.Fragment>
                                 )
@@ -134,7 +133,7 @@ const HowTos = () => {
                     totalItems = {14}
                     onChange = {(e) => {setCurrentHowTos(tileData.slice((e.page - 1) * 6, e.page * 6))}}
                 />
-            </div>    
+            </div>
         </div>
     );
 }
