@@ -53,7 +53,7 @@ const images = [
 function TaskModal() {
     const {task, changeTask} = useContext(TaskContext);
 
-    const currTask = Math.ceil(task/2);
+    const currTask = Math.min(Math.ceil(task/2), 6);
 
     return (
         <ComposedModal

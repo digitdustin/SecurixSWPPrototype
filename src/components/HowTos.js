@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {
     Pagination,
     Search,
@@ -11,6 +11,7 @@ import {Launch20} from '@carbon/icons-react'
 import RenderPDF from "./PDF.js"
 import "../assets/css/HowTos.css"
 import CongratulationsPDF from '../assets/Congratulations.pdf'
+import { TaskContext } from '../contexts/task-context'
 
 const HowTos = () => {
     const tileData = [
@@ -84,8 +85,10 @@ const HowTos = () => {
         }
     ];
 
-    const [searchTile, setSearchTile] = useState('')
-    const [currentHowTos, setCurrentHowTos] = useState(tileData.slice(0, 6))
+    const [searchTile, setSearchTile] = useState('');
+    const [currentHowTos, setCurrentHowTos] = useState(tileData.slice(0, 6));
+
+    const {changeTask} = useContext(TaskContext);
 
     return(
         <div className="bx--grid" style={{height: 'calc(100vh - 30px)', paddingTop: 50, paddingBottom: 80, overflow: 'hidden'}}>
@@ -102,11 +105,7 @@ const HowTos = () => {
                         <Row>
 
                             {currentHowTos.slice({currentHowTos}).filter((val) => {
-                                if(searchTile == "" || searchTile == null) {
-                                    return val
-                                } else if (val.header.toLowerCase().includes(searchTile.toLowerCase())){
-                                    return val
-                                }
+                                return searchTile === "" || searchTile == null|| val.header.toLowerCase().includes(searchTile.toLowerCase())
                             }).map((type, key) => {
                                 return (
                                     <React.Fragment key={key}>
@@ -126,7 +125,8 @@ const HowTos = () => {
                                                                 paddingBottom: 30,
                                                                 margin: 20
                                                               }}
-                                                        href={CongratulationsPDF}>
+                                                            href={CongratulationsPDF}
+                                                            onClick={type.id === 2 && (() => changeTask(2 * 6))}>
                                                             {type.header}
                                                             <Launch20 style={{ position: 'absolute', bottom: 10, right: 10}}/>
                                                         </ClickableTile>

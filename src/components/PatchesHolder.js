@@ -28,6 +28,7 @@ import {
 import { patches } from './PatchesData';
 import { useContext } from "react";
 import {RoleContext, roles} from '../contexts/role-context'
+import { TaskContext } from '../contexts/task-context';
 
 const headers = [
     {
@@ -54,11 +55,20 @@ const headers = [
 
 function PatchesHolder(props) {
     const [currentPatches, setCurrentPatches] = useState(props.rows.slice(0, 8))
-    const {role, toggleRole} = useContext(RoleContext);
+    const {role} = useContext(RoleContext);
+    const {changeTask} = useContext(TaskContext);
 
     useEffect(() => {
         setCurrentPatches(props.rows.slice(0,8))
     }, [props.rows])
+
+    const handleAddPatch = () => {
+        if(props.rows.filter((item) => item.name === "Google Chrome").length > 0) {
+            changeTask(2 * 5);
+        }
+        if(props.setOpen)
+            props.setOpen(false);
+    }
 
     return (
         <div style={{width: '100%'}}>
@@ -110,7 +120,7 @@ function PatchesHolder(props) {
                         Action 3
                       </TableToolbarAction>
                     </TableToolbarMenu>
-                    {role === roles.admin && <Button onClick={console.log('Button click')}>Add New Patch</Button>}
+                    {role === roles.admin && <Button onClick={handleAddPatch}>Add New Patch</Button>}
                   </TableToolbarContent>
                 </TableToolbar>
                 <Table {...getTableProps()}>

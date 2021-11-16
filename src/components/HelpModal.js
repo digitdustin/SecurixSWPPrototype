@@ -2,17 +2,21 @@ import { useContext, useState } from "react";
 import {Modal, Select, SelectItem, TextInput} from 'carbon-components-react'
 import { TaskContext } from "../contexts/task-context";
 import { HelpContext } from "../contexts/help-context";
+import { RoleContext, roles } from "../contexts/role-context";
 
 const HelpModal = () => {
     const {changeTask} = useContext(TaskContext);
     const {helpOpen, setHelpOpen, submitHelpRequest} = useContext(HelpContext);
+    const {role} = useContext(RoleContext);
     const [username, setUsername] = useState("");
     const [contact, setContact] = useState("");
     const [category, setCategory] = useState("");
     const [details, setDetails] = useState("");
 
     const handleSubmit = () => {
-        if(username === "" || category === "" || details === "") {
+        if (role === roles.admin) {
+            alert("Switch to user mode to submit a help request.")
+        } else if (username === "" || category === "" || details === "") {
             alert("Must complete all fields.")
         } else if (username.includes(":") || username.includes("|")) {
             alert("Username cannot contain the special characters \':\' or \'\|\'.");
@@ -21,7 +25,7 @@ const HelpModal = () => {
         } else if (details.includes("|")) {
             alert("Details cannot contain special character \'|\'.");
         } else {
-            submitHelpRequest(username, contact, category, details);
+            submitHelpRequest(username, contact, category, Date.now(), details);
             setHelpOpen(false);
             changeTask(2 * 2);
         }

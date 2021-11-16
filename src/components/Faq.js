@@ -18,13 +18,27 @@ import {
   Card
 } from '@mui/material';
 import { TaskContext } from '../contexts/task-context';
+import { RoleContext, roles } from '../contexts/role-context';
+import { HelpContext } from '../contexts/help-context';
 
 /* This example requires Tailwind CSS v2.0+ */
 const Faq = () => {
   const { changeTask } = React.useContext(TaskContext);
+  const {role} = React.useContext(RoleContext);
+  const {setHelpOpen} = React.useContext(HelpContext);
 
   const handleCall = () => {
-    changeTask(2 * 1);  //Try to complete task 2
+    if( role === roles.admin )
+      alert("Switch to user mode to call the help desk")
+    else
+      changeTask(2 * 1);  //Try to complete task 2
+  }
+
+  const openHelp = () => {
+    if(role === roles.admin)
+      alert("Switch to user mode to submit a help request.")
+    else
+      setHelpOpen(true)
   }
 
   const items = [
@@ -132,7 +146,9 @@ const Faq = () => {
                   <IconButton aria-label="email">
                     <Email20 />
                   </IconButton>
-                  helpdesk@atlas.com
+                  <Button onClick={openHelp}>
+                    Submit Help Request Form
+                  </Button>
                 </p>
               </Card>
             </div>
