@@ -27,12 +27,12 @@ const tasks = [
     {
         number: 4,
         title:'Find and Download a Patch for Adobe Acrobat',
-        description: 'A new version of version of Adobe Acrobat has come out. Yours is now susceptible to viruses. Find and download the latest Adobe Acrobat patch.'
+        description: 'A new version of version of Adobe Acrobat has come out. Yours is now susceptible to viruses. Find and download the latest Adobe Acrobat patch version 3.3.3.'
     },
     {
         number: 5,
         title:'Upload a new Google Chrome Patch',
-        description: 'The company\'s version of Google Chrome is out of date. Upload the new version of Google Chrome.'
+        description: 'The company\'s version of Google Chrome is out of date. Upload a new version patch of Google Chrome.'
     },
     {
         number: 6,
@@ -71,7 +71,7 @@ function TaskModal() {
                 </div>
             </ModalBody>
 
-            <ModalFooter 
+            <ModalFooter
                 primaryButtonText={`Start Task ${currTask}`}
                 onRequestSubmit={ () => changeTask() }
             />
