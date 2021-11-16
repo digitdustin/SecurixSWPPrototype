@@ -23,7 +23,7 @@ import {
 import {
     Download20,
     Bookmark20,
-    View20
+    Checkmark20
 } from '@carbon/icons-react';
 import { HelpContext } from '../contexts/help-context';
 import { RoleContext, roles } from '../contexts/role-context';
@@ -269,9 +269,9 @@ function FormHolder(props) {
                 <TableBatchActions {...getBatchActionProps()}>
                     <TableBatchAction
                     tabIndex={getBatchActionProps().shouldShowBatchActions ? 0 : -1}
-                    renderIcon={View20}
+                    renderIcon={Checkmark20}
                     onClick={handleView}>
-                    View
+                    Resolve
                     </TableBatchAction>
                     <TableBatchAction
                     tabIndex={getBatchActionProps().shouldShowBatchActions ? 0 : -1}

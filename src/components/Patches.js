@@ -42,7 +42,12 @@ const Patches = () => {
               company: patch.company,
               patch: v.download,
               version: v.version,
-              download: <Download20 onClick={() => changeTask(2 * 4) } style={{cursor:'pointer'}}/>,
+              download: <Download20 onClick={
+                () => {
+                  changeTask(2 * 4);
+                  setOpen(false)
+                } 
+              } style={{cursor:'pointer'}}/>,
               id: i
           }
           :

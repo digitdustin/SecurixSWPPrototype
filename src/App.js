@@ -18,7 +18,7 @@ import HelpModal from './components/HelpModal';
 import { HelpContext } from './contexts/help-context';
 
 function App() {
-  const [role, setRole] = useState( localStorage.getItem("role") ? Number(localStorage.getItem("role")) : roles.admin );
+  const [role, setRole] = useState( localStorage.getItem("role") ? Number(localStorage.getItem("role")) : roles.user );
   const [task, setTask] = useState( localStorage.getItem("currentTask") ? Number(localStorage.getItem("currentTask")) : 1);
   const [times, setTimes] = useState(localStorage.getItem("times") ? localStorage.getItem("times").split(",") : []);
   const [helpOpen, setHelpIsOpen] = useState(false);

@@ -60,16 +60,16 @@ const HelpModal = () => {
                 onChange={e => setCategory(e.target.value)}
             >
                 <SelectItem
-                    value="1"
-                    text="1"
+                    value="Access"
+                    text="Access"
                 />
                 <SelectItem
-                    value="2"
-                    text="2"
+                    value="Missing Information"
+                    text="Missing Information"
                 />
                 <SelectItem
-                    value="3"
-                    text="3"
+                    value="General Help"
+                    text="General Help"
                 />
             </Select>
 
