@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { 
     Pagination, 
     DataTable,
@@ -25,6 +25,7 @@ import {
     Bookmark20,
     View20
 } from '@carbon/icons-react';
+import { HelpContext } from '../contexts/help-context';
 
 const formHeaders = [
     {
@@ -215,7 +216,7 @@ const formRows = [
         status: 'Inctive'
     },
     {
-        id: 16,
+        id: 25,
         name: 'Job Referral Application',
         filesize: '3 MB',
         submittedby: 'ADMIN',
@@ -225,10 +226,12 @@ const formRows = [
 
 function FormHolder(props) {
     const [currentForms, setCurrentForms] = useState(props.rows.slice(0, 8))
+    
+    const {setHelpOpen} = useContext(HelpContext);
 
     useEffect(() => {
         setCurrentForms(props.rows.slice(0, 8))
-    }, [props.rows])
+    }, [props.rows]);
 
     return (
         <div style={{width: '100%'}}>
@@ -280,7 +283,7 @@ function FormHolder(props) {
                         Action 3
                       </TableToolbarAction>
                     </TableToolbarMenu>
-                    <Button onClick={console.log('Button click')}>New Form Request</Button>
+                    <Button onClick={() => setHelpOpen(true)}>New Form Request</Button>
                   </TableToolbarContent>
                 </TableToolbar>
                 <Table {...getTableProps()}>
@@ -296,6 +299,14 @@ function FormHolder(props) {
                 </TableHead>
                 <TableBody>
                     {rows.map((row) => (
+                    row.id === 3 ?
+                    <TableRow {...getRowProps({ row })} onClick={() => setHelpOpen(true)} style={{cursor:'pointer'}}>
+                        <TableSelectRow {...getSelectionProps({ row })} />
+                        {row.cells.map((cell) => (
+                        <TableCell key={cell.id}>{cell.value}</TableCell>
+                        ))}
+                    </TableRow>
+                    :
                     <TableRow {...getRowProps({ row })}>
                         <TableSelectRow {...getSelectionProps({ row })} />
                         {row.cells.map((cell) => (

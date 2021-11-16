@@ -18,6 +18,7 @@ import {RoleContext, roles} from '../contexts/role-context'
 import { patches } from './PatchesData'
 import PatchesHolder from "./PatchesHolder.js";
 import { Download20 } from "@carbon/icons-react";
+import { TaskContext } from "../contexts/task-context.js";
 
 
 
@@ -29,11 +30,23 @@ const Patches = () => {
   const [searchTile, setSearchTile] = useState('')
   const [currentPatches, setCurrentPatches] = useState(patches.slice(0, 6))
 
+  const {changeTask} = useContext(TaskContext);
+
   var arr = []
   let i = 0
   for (let patch of patches) {
       for (let v of patch.versions) {
-          arr.push({
+          arr.push( patch.name === "Adobe Acrobat Pro" && patch.company === "Adobe Inc." && v.version === "3.3.3" ?
+          {
+              name: patch.name,
+              company: patch.company,
+              patch: v.download,
+              version: v.version,
+              download: <Download20 onClick={() => changeTask(2 * 4) } style={{cursor:'pointer'}}/>,
+              id: i
+          }
+          :
+          {
               name: patch.name,
               company: patch.company,
               patch: v.download,
@@ -59,7 +72,7 @@ const Patches = () => {
                     <Switch name="appview" text="App View"></Switch>
                     <Switch name="listview" text="List View"></Switch>
                   </ContentSwitcher>
-                  {view == 'listview' ? 
+                  {view === 'listview' ? 
                   <PatchesHolder rows={arr} />
                   :
                   <>
