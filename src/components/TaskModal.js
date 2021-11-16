@@ -5,7 +5,7 @@ import Task2 from '../assets/img/Task2.png'
 import Task3 from '../assets/img/Task3.png'
 import Task4 from '../assets/img/Task4.png'
 import Task5 from '../assets/img/Task5.png'
-import Task6 from '../assets/ing/Task6.png'
+import Task6 from '../assets/img/Task6.png'
 import { TaskContext } from '../contexts/task-context';
 
 const tasks = [
