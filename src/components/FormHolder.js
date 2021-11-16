@@ -1,6 +1,6 @@
-import React from 'react'
-import { 
-    Pagination, 
+import React, { useState, useEffect, useContext } from 'react'
+import {
+    Pagination,
     DataTable,
     Table,
     TableHead,
@@ -18,15 +18,18 @@ import {
     TableContainer,
     Button,
     TableBatchAction,
-    TableBatchActions
+    TableBatchActions,
 } from 'carbon-components-react'
-import { 
+import {
     Download20,
-    Save20,
-    Delete20
+    Bookmark20,
+    View20
 } from '@carbon/icons-react';
+import { HelpContext } from '../contexts/help-context';
+import { RoleContext, roles } from '../contexts/role-context';
+import { TaskContext } from '../contexts/task-context';
 
-const headers = [
+const formHeaders = [
     {
         key: 'name',
         header: 'Name'
@@ -45,7 +48,7 @@ const headers = [
     },
 ]
 
-const rows = [
+const formRows = [
     {
         id: 1,
         name: 'Export Control Form',
@@ -65,23 +68,200 @@ const rows = [
         name: 'Help Request Form',
         filesize: '20 KB',
         submittedby: 'Dustin Karp',
+        status: 'Active',
+    },
+    {
+        id: 4,
+        name: 'IT LAN Admin Rights Request',
+        filesize: '10 KB',
+        submittedby: 'Chance Onyiorah',
         status: 'Active'
+    },
+    {
+        id: 5,
+        name: 'Holiday Secret Santa',
+        filesize: '4 MB',
+        submittedby: 'ADMIN',
+        status: 'Inactive'
+    },
+    {
+        id: 6,
+        name: 'SWIS User Rights Agreement',
+        filesize: '220 KB',
+        submittedby: 'ADMIN',
+        status: 'Active'
+    },
+    {
+        id: 7,
+        name: 'Privacy Policy Reservation',
+        filesize: '415 KB',
+        submittedby: 'ADMIN',
+        status: 'Inctive'
+    },
+    {
+        id: 8,
+        name: 'New Form Request (Admin Only)',
+        filesize: '3 MB',
+        submittedby: 'ADMIN',
+        status: 'Inctive'
+    },
+    {
+        id: 9,
+        name: 'Test Add Application',
+        filesize: '2 MB',
+        submittedby: 'Anthony Bower',
+        status: 'Active'
+    },
+    {
+        id: 10,
+        name: 'Department Change Request Form',
+        filesize: '109 KB',
+        submittedby: 'Allison Denham',
+        status: 'Active'
+    },
+    {
+        id: 11,
+        name: 'Open Security Acknoledgement (1)',
+        filesize: '120 KB',
+        submittedby: 'Dustin Karp',
+        status: 'Active'
+    },
+    {
+        id: 12,
+        name: 'Open Security Acknoledgement (2)',
+        filesize: '10 KB',
+        submittedby: 'ADMIN',
+        status: 'Active'
+    },
+    {
+        id: 13,
+        name: 'UPDATED Rights Reserved',
+        filesize: '4 MB',
+        submittedby: 'ADMIN',
+        status: 'Inactive'
+    },
+    {
+        id: 14,
+        name: 'Internal Invention Acknowledgement',
+        filesize: '290 KB',
+        submittedby: 'ADMIN',
+        status: 'Active'
+    },
+    {
+        id: 15,
+        name: 'Privacy Policy Reservation (2)',
+        filesize: '415 KB',
+        submittedby: 'ADMIN',
+        status: 'Inctive'
+    },
+    {
+        id: 16,
+        name: 'Job Referral Application',
+        filesize: '98 KB',
+        submittedby: 'ADMIN',
+        status: 'Inctive'
+    },
+    {
+        id: 17,
+        name: 'Internship Task Request Form',
+        filesize: '30 KB',
+        submittedby: 'ADMIN',
+        status: 'Inctive'
+    },
+    {
+        id: 18,
+        name: 'Test Add Application',
+        filesize: '202 KB',
+        submittedby: 'Anthony Bower',
+        status: 'Active'
+    },
+    {
+        id: 19,
+        name: 'Department Change Request Form',
+        filesize: '11 MB',
+        submittedby: 'Allison Denham',
+        status: 'Active'
+    },
+    {
+        id: 20,
+        name: '1067 WRU Form',
+        filesize: '120 KB',
+        submittedby: 'Dustin Karp',
+        status: 'Active'
+    },
+    {
+        id: 21,
+        name: 'Direct Deposit',
+        filesize: '10 KB',
+        submittedby: 'ADMIN',
+        status: 'Active'
+    },
+    {
+        id: 22,
+        name: '10.2.3.32 Documentation Change Request',
+        filesize: '4 MB',
+        submittedby: 'ADMIN',
+        status: 'Inactive'
+    },
+    {
+        id: 23,
+        name: 'Returns Approval Form',
+        filesize: '290 KB',
+        submittedby: 'ADMIN',
+        status: 'Active'
+    },
+    {
+        id: 24,
+        name: 'Dummy Form :)',
+        filesize: '415 KB',
+        submittedby: 'ADMIN',
+        status: 'Inctive'
+    },
+    {
+        id: 25,
+        name: 'Job Referral Application',
+        filesize: '3 MB',
+        submittedby: 'ADMIN',
+        status: 'Inctive'
     },
 ]
 
-function FormHolder() {
+function FormHolder(props) {
+    const [currentForms, setCurrentForms] = useState(props.rows.slice(0, 8))
+
+    const {setHelpOpen} = useContext(HelpContext);
+    const {role} = useContext(RoleContext);
+    const {changeTask} = useContext(TaskContext);
+
+    useEffect(() => {
+        setCurrentForms(props.rows.slice(0, 8))
+    }, [props.rows]);
+
+    const handleClick = () => {
+        if(role === roles.admin) {
+            alert("Switch to user mode to submit a help request.")
+        } else {
+            setHelpOpen(true);
+        }
+    }
+
+    const handleView = () => {
+        if(role === roles.admin)
+            changeTask(2 * 3);
+    }
+
     return (
         <div style={{width: '100%'}}>
-        <DataTable rows={rows} headers={headers} isSortable>
-            {({ 
-                rows, 
-                headers, 
-                getTableProps, 
-                getHeaderProps, 
-                getRowProps, 
-                getSelectionProps, 
-                onInputChange, 
-                getBatchActionProps, 
+        <DataTable rows={currentForms} headers={props.headers}>
+            {({
+                rows,
+                headers,
+                getTableProps,
+                getHeaderProps,
+                getRowProps,
+                getSelectionProps,
+                onInputChange,
+                getBatchActionProps,
                 selectedRows,
             }) => (
                 <TableContainer>
@@ -89,15 +269,15 @@ function FormHolder() {
                 <TableBatchActions {...getBatchActionProps()}>
                     <TableBatchAction
                     tabIndex={getBatchActionProps().shouldShowBatchActions ? 0 : -1}
-                    renderIcon={Delete20}
-                    onClick={console.log(selectedRows)}>
-                    Delete
+                    renderIcon={View20}
+                    onClick={handleView}>
+                    View
                     </TableBatchAction>
                     <TableBatchAction
                     tabIndex={getBatchActionProps().shouldShowBatchActions ? 0 : -1}
-                    renderIcon={Save20}
+                    renderIcon={Bookmark20}
                     onClick={console.log(selectedRows)}>
-                    Save
+                    Bookmark
                     </TableBatchAction>
                     <TableBatchAction
                     tabIndex={getBatchActionProps().shouldShowBatchActions ? 0 : -1}
@@ -120,7 +300,7 @@ function FormHolder() {
                         Action 3
                       </TableToolbarAction>
                     </TableToolbarMenu>
-                    <Button onClick={console.log('Button click')}>Primary Button</Button>
+                    {role === roles.user && <Button onClick={() => setHelpOpen(true)}>New Form Request</Button>}
                   </TableToolbarContent>
                 </TableToolbar>
                 <Table {...getTableProps()}>
@@ -136,20 +316,41 @@ function FormHolder() {
                 </TableHead>
                 <TableBody>
                     {rows.map((row) => (
+                    row.id === 3 ?
+                    <TableRow {...getRowProps({ row })} onClick={handleClick} style={{cursor:'pointer'}}>
+                        <TableSelectRow {...getSelectionProps({ row })} />
+                        {row.cells.map((cell) => (
+                        <TableCell key={cell.id}>{cell.value}</TableCell>
+                        ))}
+                    </TableRow>
+                    :
                     <TableRow {...getRowProps({ row })}>
                         <TableSelectRow {...getSelectionProps({ row })} />
                         {row.cells.map((cell) => (
                         <TableCell key={cell.id}>{cell.value}</TableCell>
                         ))}
                     </TableRow>
+
                     ))}
                 </TableBody>
                 </Table>
                 </TableContainer>
             )}
         </DataTable>
+        <Pagination
+            pageSizes={[8, 16, 24]}
+            pageSizeInputDisabled
+            totalItems={props.rows.length}
+            pageInputDisabled
+            onChange={(e) => {setCurrentForms(props.rows.slice((e.page - 1) * 8, e.page * 8))}}
+        />
         </div>
     )
+}
+
+FormHolder.defaultProps = {
+    headers: formHeaders,
+    rows: formRows
 }
 
 export default FormHolder

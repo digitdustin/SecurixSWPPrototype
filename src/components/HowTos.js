@@ -1,123 +1,157 @@
-import MainScreen from "./MainScreen.js";
-import '../assets/css/Patches.css';
+import React, { useContext, useState } from 'react'
+import {
+    Pagination,
+    Search,
+    ClickableTile,
+    Column,
+    Grid,
+    Row,
+}from 'carbon-components-react'
+import {Launch20} from '@carbon/icons-react'
+import RenderPDF from "./PDF.js"
+import "../assets/css/HowTos.css"
+import CongratulationsPDF from '../assets/Congratulations.pdf'
+import { TaskContext } from '../contexts/task-context'
 
 const HowTos = () => {
-  return (
-    <MainScreen title="HOW TOS">
-      <div class="container flex justify-center mx-auto">
-        <div class="flex flex-col">
-            <div class="w-full">
-                <div class="border-b border-gray-200 shadow">
-                    <table class="divide-y divide-gray-300 ">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-6 py-2 text-xs text-gray-500">
-                                  ID
-                                </th>
-                                <th class="px-6 py-2 text-xs text-gray-500">
-                                    How To Name
-                                </th>
-                                <th class="px-6 py-2 text-xs text-gray-500">
-                                    Software
-                                </th>
-                                <th class="px-6 py-2 text-xs text-gray-500">
-                                    Categories
-                                </th>
-                                <th class="px-6 py-2 text-xs text-gray-500">
-                                    Created_at
-                                </th>
-                                <th class="px-6 py-2 text-xs text-gray-500">
-                                    Download
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-300">
-                            <tr class="whitespace-nowrap">
-                                <td class="px-6 py-4 text-sm text-gray-500">
-                                    1
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-900">
-                                        Share screen on Zoom
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500">Zoom</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500">Software</div>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-gray-500">
-                                    2021-1-12
-                                </td>
-                                <td class="px-6 py-4">
-                                    <a href="#">
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                                      </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="whitespace-nowrap">
-                                <td class="px-6 py-4 text-sm text-gray-500">
-                                    2
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-900">
-                                        Test code
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500">Visual Studio</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500">Software, Testing</div>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-gray-500">
-                                    2021-1-12
-                                </td>
-                                <td class="px-6 py-4">
-                                    <a href="#">
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                                      </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="whitespace-nowrap">
-                                <td class="px-6 py-4 text-sm text-gray-500">
-                                    3
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-900">
-                                        Find Help Desk number
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500">SWIS</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500">SWIS</div>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-gray-500">
-                                    2021-1-12
-                                </td>
-                                <td class="px-6 py-4">
-                                    <a href="#">
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                                      </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+    const tileData = [
+        {
+            id: 1,
+            header: "Share a screen on Zoom"
+        },
+        {
+            id: 2,
+            header: "Add a new user"
+        },
+        {
+            id: 3,
+            header: "Request local administrator rights"
+        },
+        {
+            id: 4,
+            header: "Find the How-To page"
+        },
+        {
+            id: 5,
+            header: "Download new software patches"
+        },
+        {
+            id: 6,
+            header: "Submit a new form"
+        },
+        {
+            id: 7,
+            header: "Call the help desk"
+        },
+        {
+            id: 8,
+            header: "Update Software"
+        },
+        {
+            id: 9,
+            header: "Approve a form in SWIS"
+        },
+        {
+            id: 10,
+            header: "Bake a cake"
+        },
+        {
+            id: 11,
+            header: "Download a form"
+        },
+        {
+            id: 12,
+            header: "Change Departments"
+        },
+        {
+            id: 13,
+            header: "Access the modern web portal"
+        },
+        {
+            id: 14,
+            header: "Refer an employee"
+        },
+        {
+            id: 15,
+            header: "Find announcements"
+        },
+        {
+            id: 16,
+            header: "Submit an IT help ticket"
+        },
+        {
+            id: 17,
+            header: "Request time off"
+        }
+    ];
+
+    const [searchTile, setSearchTile] = useState('');
+    const [currentHowTos, setCurrentHowTos] = useState(tileData.slice(0, 6));
+
+    const {changeTask} = useContext(TaskContext);
+
+    return(
+        <div className="bx--grid" style={{height: 'calc(100vh - 30px)', paddingTop: 50, paddingBottom: 80, overflow: 'hidden'}}>
+             <div className="bx--row">
+                <section className="bx--offset-lg-2 bx--col-lg-10">
+                    <h1 style={{marginBottom: 10}}>How-Tos</h1>
+                    <p style={{marginBottom: 20}}>Click on a How-To to open it in a new tab.</p>
+                    <div style={{backgroundColor: 'white', padding : 20, marginBottom: 20}}>
+                    <Search
+                        placeholder="Search"
+                        onChange={e => {setSearchTile(e.target.value)}}
+                    />
+                    <Grid>
+                        <Row>
+
+                            {currentHowTos.slice({currentHowTos}).filter((val) => {
+                                return searchTile === "" || searchTile == null|| val.header.toLowerCase().includes(searchTile.toLowerCase())
+                            }).map((type, key) => {
+                                return (
+                                    <React.Fragment key={key}>
+                                        <Column xs={4} sm={8} md={12} style={{padding:10}}>
+                                            <div className="container">
+                                                    <h2 className="tile__header">
+                                                        <ClickableTile
+                                                            className="tile"
+                                                            target="_blank"
+                                                            rel="noopener noreferer"
+                                                            style={{
+                                                                backgroundColor: '#f4f4f4',
+                                                                display: 'flex',
+                                                                alignItems: 'center',
+                                                                justifyContent: 'center',
+                                                                paddingTop: 30,
+                                                                paddingBottom: 30,
+                                                                margin: 20
+                                                              }}
+                                                            href={CongratulationsPDF}
+                                                            onClick={type.id === 2 && (() => changeTask(2 * 6))}>
+                                                            {type.header}
+                                                            <Launch20 style={{ position: 'absolute', bottom: 10, right: 10}}/>
+                                                        </ClickableTile>
+                                                    </h2>
+                                            </div>
+                                        </Column>
+                                    </React.Fragment>
+                                )
+                            })}
+                        </Row>
+                    </Grid>
+                <Pagination
+                    page={1}
+                    pageSizeInputDisabled
+                    pageSize={6}
+                    pageSizes = {[6, 12, 18]}
+                    totalItems = {17}
+                    onChange = {(e) => {setCurrentHowTos(tileData.slice((e.page - 1) * 6, e.page * 6))}}
+                />
+                    </div>
+                </section>
+            </div>
+            <div className="bx--offset-lg-3" style={{paddingTop: "20px", width: "75%"}}>
             </div>
         </div>
-      </div>
-    </MainScreen>
-  );
+    );
 }
-
 export default HowTos;
