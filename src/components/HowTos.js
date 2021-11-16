@@ -10,8 +10,8 @@ import {
 import {Launch20} from '@carbon/icons-react'
 import RenderPDF from "./PDF.js"
 import "../assets/css/HowTos.css"
-import dummypdf from '../assets/dummy.pdf'
-import {TaskContext} from '../contexts/task-context'
+import CongratulationsPDF from '../assets/Congratulations.pdf'
+import { TaskContext } from '../contexts/task-context'
 
 const HowTos = () => {
     const tileData = [
@@ -105,11 +105,7 @@ const HowTos = () => {
                         <Row>
                     
                             {currentHowTos.slice({currentHowTos}).filter((val) => {
-                                if(searchTile == "" || searchTile == null) {
-                                    return val
-                                } else if (val.header.toLowerCase().includes(searchTile.toLowerCase())){
-                                    return val
-                                } 
+                                return searchTile === "" || searchTile == null|| val.header.toLowerCase().includes(searchTile.toLowerCase())
                             }).map((type, key) => {
                                 return (
                                     <React.Fragment key={key}>
@@ -129,7 +125,7 @@ const HowTos = () => {
                                                                 paddingBottom: 30,
                                                                 margin: 20
                                                               }} 
-                                                            href={dummypdf}
+                                                            href={CongratulationsPDF}
                                                             onClick={type.id === 2 && (() => changeTask(2 * 6))}>  
                                                             {type.header}
                                                             <Launch20 style={{ position: 'absolute', bottom: 10, right: 10}}/>

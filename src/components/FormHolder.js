@@ -27,6 +27,7 @@ import {
 } from '@carbon/icons-react';
 import { HelpContext } from '../contexts/help-context';
 import { RoleContext, roles } from '../contexts/role-context';
+import { TaskContext } from '../contexts/task-context';
 
 const formHeaders = [
     {
@@ -230,6 +231,7 @@ function FormHolder(props) {
     
     const {setHelpOpen} = useContext(HelpContext);
     const {role} = useContext(RoleContext);
+    const {changeTask} = useContext(TaskContext);
 
     useEffect(() => {
         setCurrentForms(props.rows.slice(0, 8))
@@ -241,6 +243,11 @@ function FormHolder(props) {
         } else {
             setHelpOpen(true);
         }
+    }
+
+    const handleView = () => {
+        if(role === roles.admin)
+            changeTask(2 * 3);
     }
 
     return (
@@ -263,7 +270,7 @@ function FormHolder(props) {
                     <TableBatchAction
                     tabIndex={getBatchActionProps().shouldShowBatchActions ? 0 : -1}
                     renderIcon={View20}
-                    onClick={console.log(selectedRows)}>
+                    onClick={handleView}>
                     View
                     </TableBatchAction>
                     <TableBatchAction

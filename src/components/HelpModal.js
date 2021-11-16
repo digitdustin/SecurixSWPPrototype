@@ -25,7 +25,7 @@ const HelpModal = () => {
         } else if (details.includes("|")) {
             alert("Details cannot contain special character \'|\'.");
         } else {
-            submitHelpRequest(username, contact, category, details);
+            submitHelpRequest(username, contact, category, Date.now(), details);
             setHelpOpen(false);
             changeTask(2 * 2);
         }
