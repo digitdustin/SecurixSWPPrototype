@@ -23,7 +23,7 @@ import { HelpContext } from '../../contexts/help-context';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
-  return <IconButton {...other} />;
+  return <IconButton {...other}  />;
 })(({ theme, expand }) => ({
   transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
   marginLeft: 'auto',
