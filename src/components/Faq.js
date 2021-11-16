@@ -2,7 +2,8 @@ import * as React from 'react';
 import {
   Accordion,
   AccordionItem,
-  Tile
+  Tile,
+  Button
 } from "carbon-components-react";
 import '../assets/css/Faq.css';
 import { gray, warmGray, white } from '@carbon/colors';
@@ -16,9 +17,15 @@ import {
   Divider,
   Card
 } from '@mui/material';
+import { TaskContext } from '../contexts/task-context';
 
 /* This example requires Tailwind CSS v2.0+ */
 const Faq = () => {
+  const { changeTask } = React.useContext(TaskContext);
+
+  const handleCall = () => {
+    changeTask(2 * 1);  //Try to complete task 2
+  }
 
   const items = [
     {
@@ -99,7 +106,9 @@ const Faq = () => {
                   <IconButton aria-label="phone">
                     <Phone20 />
                   </IconButton>
-                  (305) 299-7312
+                  <Button onClick={handleCall}>
+                    Call the Help Desk
+                  </Button>
                 </p>
                 <div className='phone-hours' style={{paddingTop: '5%', paddingBottom: '10%'}}>
                   <Tile style={{backgroundColor: white}}>

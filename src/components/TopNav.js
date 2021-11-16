@@ -54,7 +54,7 @@ function TopNav() {
               isActive={isSideNavExpanded}
             />
 
-            <HeaderName href="#" prefix="Atlas">
+            <HeaderName href="/" prefix="Atlas">
               [SWIS]
             </HeaderName>
 
@@ -97,9 +97,6 @@ function TopNav() {
                 <SideNavLink renderIcon={Home32} href="javascript:void(0)" onClick={() => {history.push(`/`);}} large>
                   Home
                 </SideNavLink>
-                <SideNavLink renderIcon={UserMultiple32} href="javascript:void(0)" onClick={() => {history.push(`/roles`);}} large>
-                  Roles
-                </SideNavLink>
                 <SideNavLink renderIcon={RequestQuote32} href="javascript:void(0)" onClick={() => {history.push(`/forms`);}} large>
                   Forms
                 </SideNavLink>
@@ -109,7 +106,7 @@ function TopNav() {
                 <SideNavLink renderIcon={AlignBoxMiddleCenter32} href="javascript:void(0)" onClick={() => {history.push(`/how-tos`);}} large>
                   How-Tos
                 </SideNavLink>
-                <SideNavLink renderIcon={Help32} href="/faq" large>
+                <SideNavLink renderIcon={Help32} href="javascript:void(0)" onClick={() => {history.push(`/faq`);}} large>
                   FAQ
                 </SideNavLink>
 
