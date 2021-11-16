@@ -106,7 +106,7 @@ function TopNav() {
                 <SideNavLink renderIcon={AlignBoxMiddleCenter32} href="javascript:void(0)" onClick={() => {history.push(`/how-tos`);}} large>
                   How-Tos
                 </SideNavLink>
-                <SideNavLink renderIcon={Help32} href="/faq" large>
+                <SideNavLink renderIcon={Help32} href="javascript:void(0)" onClick={() => {history.push(`/faq`);}} large>
                   FAQ
                 </SideNavLink>
 
