@@ -54,7 +54,7 @@ function TopNav() {
               isActive={isSideNavExpanded}
             />
 
-            <HeaderName href="#" prefix="Atlas">
+            <HeaderName href="/" prefix="Atlas">
               [SWIS]
             </HeaderName>
 
@@ -96,9 +96,6 @@ function TopNav() {
               <SideNavItems>
                 <SideNavLink renderIcon={Home32} href="javascript:void(0)" onClick={() => {history.push(`/`);}} large>
                   Home
-                </SideNavLink>
-                <SideNavLink renderIcon={UserMultiple32} href="javascript:void(0)" onClick={() => {history.push(`/roles`);}} large>
-                  Roles
                 </SideNavLink>
                 <SideNavLink renderIcon={RequestQuote32} href="javascript:void(0)" onClick={() => {history.push(`/forms`);}} large>
                   Forms

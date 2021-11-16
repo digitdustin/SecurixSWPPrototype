@@ -65,7 +65,7 @@ const formRows = [
         name: 'Help Request Form',
         filesize: '20 KB',
         submittedby: 'Dustin Karp',
-        status: 'Active'
+        status: 'Active',
     },
     {
         id: 4,
@@ -296,12 +296,21 @@ function FormHolder(props) {
                 </TableHead>
                 <TableBody>
                     {rows.map((row) => (
+                    row.id == 3 ? 
+                    <TableRow {...getRowProps({ row })} style={{cursor: 'pointer'}} onClick={() => {console.log('test')}}>
+                        <TableSelectRow {...getSelectionProps({ row })} />
+                        {row.cells.map((cell) => (
+                        <TableCell key={cell.id}>{cell.value}</TableCell>
+                        ))}
+                    </TableRow>
+                    :
                     <TableRow {...getRowProps({ row })}>
                         <TableSelectRow {...getSelectionProps({ row })} />
                         {row.cells.map((cell) => (
                         <TableCell key={cell.id}>{cell.value}</TableCell>
                         ))}
                     </TableRow>
+                    
                     ))}
                 </TableBody>
                 </Table>
