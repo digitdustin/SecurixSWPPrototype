@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { 
-    Pagination, 
+import {
+    Pagination,
     DataTable,
     Table,
     TableHead,
@@ -20,7 +20,7 @@ import {
     TableBatchAction,
     TableBatchActions,
 } from 'carbon-components-react'
-import { 
+import {
     Download20,
     Bookmark20,
     View20
@@ -74,7 +74,7 @@ const formRows = [
         id: 4,
         name: 'IT LAN Admin Rights Request',
         filesize: '10 KB',
-        submittedby: 'ADMIN',
+        submittedby: 'Chance Onyiorah',
         status: 'Active'
     },
     {
@@ -228,7 +228,7 @@ const formRows = [
 
 function FormHolder(props) {
     const [currentForms, setCurrentForms] = useState(props.rows.slice(0, 8))
-    
+
     const {setHelpOpen} = useContext(HelpContext);
     const {role} = useContext(RoleContext);
     const {changeTask} = useContext(TaskContext);
@@ -253,15 +253,15 @@ function FormHolder(props) {
     return (
         <div style={{width: '100%'}}>
         <DataTable rows={currentForms} headers={props.headers}>
-            {({ 
-                rows, 
-                headers, 
-                getTableProps, 
-                getHeaderProps, 
-                getRowProps, 
-                getSelectionProps, 
-                onInputChange, 
-                getBatchActionProps, 
+            {({
+                rows,
+                headers,
+                getTableProps,
+                getHeaderProps,
+                getRowProps,
+                getSelectionProps,
+                onInputChange,
+                getBatchActionProps,
                 selectedRows,
             }) => (
                 <TableContainer>
@@ -330,16 +330,16 @@ function FormHolder(props) {
                         <TableCell key={cell.id}>{cell.value}</TableCell>
                         ))}
                     </TableRow>
-                    
+
                     ))}
                 </TableBody>
                 </Table>
                 </TableContainer>
             )}
         </DataTable>
-        <Pagination 
-            pageSizes={[8, 16, 24]} 
-            pageSizeInputDisabled 
+        <Pagination
+            pageSizes={[8, 16, 24]}
+            pageSizeInputDisabled
             totalItems={props.rows.length}
             pageInputDisabled
             onChange={(e) => {setCurrentForms(props.rows.slice((e.page - 1) * 8, e.page * 8))}}
